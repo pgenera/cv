@@ -2,6 +2,11 @@ NAME  := phil_genera_cv
 BUILD := build
 DIST  := dist
 
+# Reproducible PDF: stamp it with the last commit touching its sources, not the
+# build time, so it only changes when its content does.
+export SOURCE_DATE_EPOCH := $(shell git log -1 --format=%ct -- cv.yaml templates/cv.tex build.py 2>/dev/null)
+export FORCE_SOURCE_DATE := 1
+
 .PHONY: all clean check fmt svn publish publish-push
 
 all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md check
