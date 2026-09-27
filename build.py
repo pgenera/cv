@@ -218,9 +218,11 @@ def render_html(cv):
         roles = []
         for r in job["roles"]:
             team = f'<span class="team">{h(r["team"])}</span>' if r.get("team") else ""
+            when = "" if h_dates(r) == h_dates(job) and len(job["roles"]) == 1 \
+                else f"<time>{h_dates(r)}</time>"
             roles.append(
                 f'<li class="role reveal"><div class="role-head"><h4>{h(r["title"])}</h4>'
-                f'{team}<time>{h_dates(r)}</time></div>{h_bullets(r["bullets"])}</li>')
+                f'{team}{when}</div>{h_bullets(r["bullets"])}</li>')
         exp.append(
             f'<article class="employer"><header class="employer-head"><h3>{h(job["org"])}</h3>'
             f'<time>{h_dates(job)}</time></header><ol class="timeline">{"".join(roles)}</ol></article>')
@@ -236,7 +238,8 @@ def render_html(cv):
             f'<time>{h(p["dates"])}</time></div>{desc}{h_bullets(p["bullets"])}</article>')
 
     edu = "".join(
-        f'<p><strong>{h(e["school"])}</strong> <time>{h_dates(e)}</time><br>{h(e["degree"])}</p>'
+        f'<div class="edu-head"><strong>{h(e["school"])}</strong><time>{h_dates(e)}</time></div>'
+        f'<p>{h(e["degree"])}</p>'
         for e in cv["education"])
 
     fills = {

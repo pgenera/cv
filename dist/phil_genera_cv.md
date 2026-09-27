@@ -14,7 +14,7 @@ Infrastructure engineer with 19 years at Google, roughly fifteen of them as an i
 
 ## Technical
 
-Java, Python, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Routine Linux systems work: nftables, policy routing and BGP, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity. Global and regional load software and softswitch load balancing.
+Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP, docker, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity. Global and regional load software load balancing.
 
 ## Experience
 
@@ -24,11 +24,11 @@ Java, Python, and C++, plus a long tail of domain-specific languages, with recen
 
 - Manage the team responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint.
 - Own the reliability and safety of those actions. The goal is that capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding. Defined and drove progress on customer-centric SLIs, SLOs, and SLAs.
-- Moved footprint changes from operator-driven execution toward automated, gated actuation, so that the scale of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
+- Moved footprint changes from operator-driven execution toward automated, continious actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
 
-#### Senior Site Reliability Engineer, then Site Reliability Engineering Manager, Google for Clinicians (Apr 2021 – Feb 2024)
+#### Staff Site Reliability Engineer, Site Reliability Engineering Manager, Google for Clinicians (Apr 2021 – Feb 2024)
 
-- SRE lead for Google's short-lived EHR search and longitudinal health-record product, serving one of the largest hospital systems in the United States, delivering streaming record updates, normalization, enrichment and analysis end to end in minutes.
+- SRE lead for Google's short-lived EHR search and longitudinal health-record product (Google for Clinicians), serving one of the largest hospital systems in the United States, delivering streaming record updates, normalization, enrichment and analysis end to end in minutes.
 - In addition to ETL indexing and search, the import pipeline added AI enrichments to physician notes and test results. Designed, built, and shipped load balancing and traffic management for the enrichment pipeline, delivering significantly higher reliability, lower operator toil, and resiliency against bad input.
 - Took over management of the team in June 2022 while continuing the SRE work. Scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships and software engineering productivity.
 

@@ -31,10 +31,10 @@ summary: >-
   still writing and shipping systems code outside of work.
 
 technical: >-
-  Java, Python, and C++, plus a long tail of domain-specific languages, with recent
-  project work in Kotlin and Go. Routine Linux systems work: nftables, policy routing
-  and BGP, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity.
-  Global and regional load software and softswitch load balancing.
+  Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent
+  project work in Kotlin and Go. Linux systems work: nftables, policy routing
+  and BGP, docker, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity.
+  Global and regional load software load balancing.
 
 experience:
   - org: Google
@@ -57,18 +57,18 @@ experience:
             customer-centric SLIs, SLOs, and SLAs.
           - >-
             Moved footprint changes from operator-driven execution toward automated,
-            gated actuation, so that the scale of a change is bounded by policy rather
+            continious actuation, so that the scale and speed of a change is bounded by policy rather
             than by operator attention, and is easier, safer, and faster.
 
       - title: >-
-          Senior Site Reliability Engineer, then Site Reliability Engineering Manager
+          Staff Site Reliability Engineer, Site Reliability Engineering Manager
         team: Google for Clinicians
         start: Apr 2021
         end: Feb 2024
         bullets:
           - >-
             SRE lead for Google's short-lived EHR search and longitudinal health-record
-            product, serving one of the largest hospital systems in the United States,
+            product (Google for Clinicians), serving one of the largest hospital systems in the United States,
             delivering streaming record updates, normalization, enrichment and analysis
             end to end in minutes.
           - >-
