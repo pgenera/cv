@@ -58,7 +58,7 @@ def is_private(path):
 def filtered_tree(commit, index):
     env = {**os.environ, "GIT_INDEX_FILE": index}
     git("read-tree", commit, env=env)
-    git("rm", "--cached", "-r", "-q", "--ignore-unmatch", "--", *PRIVATE, env=env)
+    git("rm", "--cached", "-r", "-q", "-f", "--ignore-unmatch", "--", *PRIVATE, env=env)
     return git("write-tree", env=env)
 
 
