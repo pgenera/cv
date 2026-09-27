@@ -2,7 +2,7 @@ NAME  := phil_genera_cv
 BUILD := build
 DIST  := dist
 
-.PHONY: all clean check fmt
+.PHONY: all clean check fmt svn publish publish-push
 
 all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md check
 
@@ -31,6 +31,17 @@ check: $(DIST)/$(NAME).pdf
 
 fmt:
 	python3 fmt_yaml.py cv.yaml
+
+# Full repo, including private/ and CLAUDE.md, goes to SVN.
+svn:
+	git svn dcommit
+
+# Filtered history goes to GitHub. `publish` is a dry run; `publish-push` pushes.
+publish:
+	python3 publish.py
+
+publish-push:
+	python3 publish.py --push
 
 clean:
 	rm -rf $(BUILD)
