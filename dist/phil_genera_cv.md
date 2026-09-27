@@ -4,7 +4,7 @@ Infrastructure & Site Reliability Engineering
 
 - Location: Cambridge, MA
 - Email: <pg@fivesevenfive.org>
-- Phone: +1(203)606-4771
+- Phone: +1 (203) 606-4771
 - [github.com/pgenera](https://github.com/pgenera)
 - [linkedin.com/in/pgenera](https://www.linkedin.com/in/pgenera)
 
@@ -24,7 +24,8 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 - Manage the team responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint.
 - Own the reliability and safety of those actions. The goal is that capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding. Defined and drove progress on customer-centric SLIs, SLOs, and SLAs.
-- Moved footprint changes from operator-driven execution toward automated, continious actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
+- Moved footprint changes from operator-driven execution toward automated, continuous actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
+- Responsible for the oncall team in US-East, training up new members, managing workload with the global team, and giving Incident Command System training annually.
 
 #### Staff Site Reliability Engineer, Site Reliability Engineering Manager, Google for Clinicians (Apr 2021 – Feb 2024)
 
@@ -42,7 +43,7 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 - Ran the West Coast side of the SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become Google Cloud Storage.
 - As tech lead for the upload server, led the infrastructure response to the 2013 Snowden disclosures for the upload server and GCS.
-- Shared on-call and operational ownership of YouTube uploads, transcoding, Content ID, and streaming infrastructure.
+- Shared oncall and operational ownership of YouTube uploads, transcoding, Content ID, and streaming infrastructure.
 - Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, Google Fiber, and YouTube TV.
 
 #### Software Engineer, Mobile Search (Aug 2007 – Nov 2012)
@@ -68,15 +69,14 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 - Built for offline operation and key custody: the watch holds no `INTERNET` permission and its private key never leaves the device, with a [companion phone app](https://github.com/pgenera/wearvian-companion) performing the one-time cloud enrollment over the Wear OS Data Layer.
 - Power-saving passive mode releases the wake lock and tears down the radio when idle, with a hardware-offloaded scan rebuilding the link on approach.
 
-### [mpubsub](https://github.com/pgenera/esphome-mpubsub): brokerless IPv6 multicast pub/sub transport (2026)
+### Home automation and network toys (ongoing)
 
-- Publish/subscribe transport with no broker: each topic maps deterministically to an IPv6 multicast group derived from a SHA-256 of the topic name, so publishers and subscribers rendezvous without coordination and the fabric survives losing the WAN.
-- Wire protocol with a 12-byte header, CRC-32 topic disambiguation, and optional authenticated encryption, shipped as an ESPHome component in C++, a Home Assistant integration in Python, a Go bridge to MQTT, and a Python reference implementation.
-
-### Home network and radio infrastructure (ongoing)
-
-- Linux-routed network with policy-based routing, inter-VLAN routing across segments drawn well past the point of necessity (roughly one VLAN per resident), an nftables trust-zone ruleset, IPv6 tunneling, and BGP-announced AMPRNet (44/8) address space.
-- Survey-calibrated u-blox GPS timing receiver on gpsd, with custom Python tooling for the UBX configuration the standard utilities do not reach.
+- [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to Home Assistant via bluetooth proxies.
+- [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-panel disciplined NTP refclock.
+- [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements my [defensive publication](https://www.tdcommons.org/dpubs_series/5601) of brokerless Publish/Subscribe, and adds typing and encryption.
+- Linux-routed home network with policy-based routing, roughly one VLAN per resident, and an nftables trust-zone ruleset.
+- Run IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space.
+- Building my own consoles, monitoring, and alerting for the systems I own, from woodstoves to furnaces to solar arrays.
 
 ## Patents and Publications
 

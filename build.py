@@ -5,6 +5,7 @@ Usage: build.py cv.yaml OUTDIR
 Writes OUTDIR/phil_genera_cv.tex, OUTDIR/index.html, OUTDIR/phil_genera_cv.md.
 """
 
+import base64
 import html
 import re
 import sys
@@ -207,42 +208,73 @@ def h_bullets(items):
     return "<ul>" + "".join(f"<li>{h(b)}</li>" for b in items) + "</ul>"
 
 
-def render_html(cv):
-    contact = [f'<a class="chip" href="mailto:{cv["email"]}">{h(cv["email"])}</a>']
-    if cv.get("phone"):
-        contact.append(f'<a class="chip" href="{tel(cv["phone"])}">{h(cv["phone"])}</a>')
-    contact += [f'<a class="chip" href="{l["url"]}">{h(l["label"])}</a>' for l in cv["links"]]
+def map_svg():
+    """Abstract street map for the hero: two street grids at different angles,
+    a few arterials, a river, and two parks. Purely decorative."""
+    W, H = 1440, 460
+    o = [f'<svg class="map" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid slice" '
+         'aria-hidden="true" focusable="false">',
+         '<defs><clipPath id="ga"><path d="M0 0H820L640 460H0Z"/></clipPath>'
+         '<clipPath id="gb"><path d="M820 0H1440V460H640Z"/></clipPath></defs>',
+         '<path class="m-park" d="M150 250l130-30 40 110-140 30z"/>',
+         '<path class="m-park" d="M1215 175l125-22 22 84-128 22z"/>']
+    for clip, (angle, cx, dx, dy) in (("ga", (-17, 400, 92, 118)), ("gb", (9, 1100, 104, 86))):
+        lines = [f"M{x} -700V1200" for x in range(-700, 2200, dx)]
+        lines += [f"M-700 {y}H2200" for y in range(-700, 1200, dy)]
+        o.append(f'<g clip-path="url(#{clip})"><path class="m-minor" '
+                 f'transform="rotate({angle} {cx} 230)" d="{"".join(lines)}"/></g>')
+    o.append('<path class="m-water" stroke-width="64" '
+             'd="M540 540C760 430 900 385 1060 352S1330 292 1500 322"/>')
+    majors = ("M-20 122C300 92 600 182 860 142S1250 62 1460 92",
+              "M772 -20C730 150 690 300 612 480",
+              "M960 480C1050 380 1170 300 1260 -20")
+    o += [f'<path class="m-major-edge" d="{d}"/>' for d in majors]
+    o += [f'<path class="m-major" d="{d}"/>' for d in majors]
+    o.append("</svg>")
+    return "".join(o)
 
-    exp = []
+
+def font_b64(name):
+    return base64.b64encode((TEMPLATES / "fonts" / name).read_bytes()).decode()
+
+
+def render_html(cv):
+    contact = [f'<a href="mailto:{cv["email"]}">{h(cv["email"])}</a>']
+    if cv.get("phone"):
+        contact.append(f'<a href="{tel(cv["phone"])}">{h(cv["phone"])}</a>')
+    contact += [f'<a href="{l["url"]}">{h(l["label"])}</a>' for l in cv["links"]]
+
+    exp, here_done = [], False
     for job in cv["experience"]:
-        roles = []
+        single = len(job["roles"]) == 1
+        exp.append(f'<div class="org"><time>{h_dates(job)}</time><h3>{h(job["org"])}</h3></div>')
         for r in job["roles"]:
+            here = not here_done and r.get("end") == "Present"
+            here_done = here_done or here
             team = f'<span class="team">{h(r["team"])}</span>' if r.get("team") else ""
-            when = "" if h_dates(r) == h_dates(job) and len(job["roles"]) == 1 \
-                else f"<time>{h_dates(r)}</time>"
-            roles.append(
-                f'<li class="role reveal"><div class="role-head"><h4>{h(r["title"])}</h4>'
-                f'{team}{when}</div>{h_bullets(r["bullets"])}</li>')
-        exp.append(
-            f'<article class="employer"><header class="employer-head"><h3>{h(job["org"])}</h3>'
-            f'<time>{h_dates(job)}</time></header><ol class="timeline">{"".join(roles)}</ol></article>')
+            when = "" if single and h_dates(r) == h_dates(job) else f"<time>{h_dates(r)}</time>"
+            exp.append(
+                f'<div class="stop{" here" if here else ""}">{when}<div><h4>{h(r["title"])}</h4>'
+                f'{team}{h_bullets(r["bullets"])}</div></div>')
 
     projects = []
     for p in cv["personal_projects"]:
         name = h(p["name"])
         if p.get("url"):
             name = f'<a href="{p["url"]}">{name}</a>'
-        desc = f'<p class="desc">{h(p["description"])}</p>' if p.get("description") else ""
+        what = f'<p class="what">{h(p["description"])}</p>' if p.get("description") else ""
         projects.append(
-            f'<article class="card reveal"><div class="card-head"><h3>{name}</h3>'
-            f'<time>{h(p["dates"])}</time></div>{desc}{h_bullets(p["bullets"])}</article>')
+            f'<article class="project"><h3>{name}<time>{h(p["dates"])}</time></h3>'
+            f'{what}{h_bullets(p["bullets"])}</article>')
 
     edu = "".join(
-        f'<div class="edu-head"><strong>{h(e["school"])}</strong><time>{h_dates(e)}</time></div>'
-        f'<p>{h(e["degree"])}</p>'
+        f'<p><strong>{h(e["school"])}</strong><time>{h_dates(e)}</time></p><p>{h(e["degree"])}</p>'
         for e in cv["education"])
 
     fills = {
+        "FONT_ROMAN": font_b64("overpass-latin-wght-normal.woff2"),
+        "FONT_ITALIC": font_b64("overpass-latin-wght-italic.woff2"),
+        "MAP": map_svg(),
         "NAME": h(cv["name"]),
         "TITLE": html.escape(cv["name"]),
         "DESCRIPTION": html.escape(plain(cv["headline"]) + ". " + plain(cv["summary"]).split(". ")[0] + "."),
@@ -262,7 +294,7 @@ def render_html(cv):
     out = (TEMPLATES / "site.html").read_text()
     for k, v in fills.items():
         out = out.replace("{{" + k + "}}", v)
-    leftover = re.findall(r"\{\{[A-Z]+\}\}", out)
+    leftover = re.findall(r"\{\{[A-Z_]+\}\}", out)
     if leftover:
         sys.exit(f"unfilled placeholders in site.html: {leftover}")
     return out
