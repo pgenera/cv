@@ -4,16 +4,17 @@ Infrastructure & Site Reliability Engineering
 
 - Location: Cambridge, MA
 - Email: <pg@fivesevenfive.org>
+- Phone: +1(203)606-4771
 - [github.com/pgenera](https://github.com/pgenera)
 - [linkedin.com/in/pgenera](https://www.linkedin.com/in/pgenera)
 
 ## Summary
 
-Infrastructure engineer with 19 years at Google, roughly fifteen of them as an individual contributor and tech lead across mobile search, media and storage infrastructure, cloud networking, and healthcare systems, and the last four managing small infrastructure teams. Built the first global load balancing for the L7 proxy fronting Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Comfortable at the layer where capacity, traffic management, and failure domains meet, and still writing and shipping systems code outside of work.
+Infrastructure engineer with 19 years at Google, roughly fifteen of them as an individual contributor and tech lead across mobile search, media and storage infrastructure, cloud networking, and healthcare systems, and the last four managing small infrastructure teams. Built the first global load balancing for the L7 proxy fronting Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Expert at the layer where capacity, traffic management, and failure domains meet, and still writing and shipping systems code outside of work.
 
 ## Technical
 
-Java, Python, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Routine Linux systems work: nftables, policy routing and BGP, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity. Minor contributions to Envoy.
+Java, Python, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Routine Linux systems work: nftables, policy routing and BGP, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity. Global and regional load software and softswitch load balancing.
 
 ## Experience
 
@@ -21,29 +22,35 @@ Java, Python, and C++, plus a long tail of domain-specific languages, with recen
 
 #### Software Engineering Manager, Continuous Delivery Infrastructure (Feb 2024 – Present)
 
-- Manage the team responsible for footprint operations (turn up, turn down, resize, move) across Google's internal continuous-delivery infrastructure, which actuates the majority of the production footprint.
-- Own the reliability and safety of those actions. The goal is that routine capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding.
-- Work on moving footprint changes from operator-driven execution toward automated, gated actuation, so that the scale of a change is bounded by policy rather than by operator attention.
+- Manage the team responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint.
+- Own the reliability and safety of those actions. The goal is that capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding. Defined and drove progress on customer-centric SLIs, SLOs, and SLAs.
+- Moved footprint changes from operator-driven execution toward automated, gated actuation, so that the scale of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
 
 #### Senior Site Reliability Engineer, then Site Reliability Engineering Manager, Google for Clinicians (Apr 2021 – Feb 2024)
 
-- SRE for an EHR search and longitudinal health-record research platform serving one of the largest hospital systems in the United States, delivering streaming record updates, normalization, and analysis end to end in minutes.
-- Took over management of the team in June 2022 while continuing the SRE work. Scope covered HIPAA and related compliance, infrastructure cost, and software engineering productivity.
+- SRE lead for Google's short-lived EHR search and longitudinal health-record product, serving one of the largest hospital systems in the United States, delivering streaming record updates, normalization, enrichment and analysis end to end in minutes.
+- In addition to ETL indexing and search, the import pipeline added AI enrichments to physician notes and test results. Designed, built, and shipped load balancing and traffic management for the enrichment pipeline, delivering significantly higher reliability, lower operator toil, and resiliency against bad input.
+- Took over management of the team in June 2022 while continuing the SRE work. Scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships and software engineering productivity.
 
 #### Senior Software Engineer, Google Cloud Networking (Aug 2017 – Apr 2021)
 
-- Built the first global load balancing for Google's L7 proxy, the tier sitting between Google Cloud and Google production, a large and high-visibility system carrying external traffic into the platform.
+- Built the first global load balancing for Google's internal L7 proxy (CloudPath, sitting between Google Cloud and Google production), a large and high-reliability component of the Google Cloud Platform.
+- This load balancing project, with others, enabled traffic grown from XX Gbps to XX Tbps, with higher customer reliability, and lower cost.
 - Worked across the proxy and the software-defined networking control plane feeding it, publicly described in *Orion: Google's Software-Defined Networking Control Plane* (NSDI 2021).
 
 #### Senior Site Reliability Engineer, YouTube & Storage Infrastructure (Nov 2012 – Aug 2017)
 
-- Ran the west-coast side of the SRE team operating YouTube's video transcoding pipeline and upload server. The upload server went on to become Google Cloud Storage.
+- Ran the West Coast side of the SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become Google Cloud Storage.
+- As tech lead for the upload server, led the infrastructure response to the 2013 Snowden disclosures for the upload server and GCS.
+- Shared on-call and operational ownership of YouTube uploads, transcoding, Content ID, and streaming infrastructure.
+- Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, Google Fiber, and YouTube TV.
 
 #### Software Engineer, Mobile Search (Aug 2007 – Nov 2012)
 
 - Invented *Search with My Location*, the blue dot on the mobile search home page, and co-authored the resulting patent with the product manager for the feature.
 - Worked on google.com/m, particularly universal and local search, and curated the local search property for several years.
 - Tech lead for mobile search infrastructure work, including launching ads on new mobile properties.
+- 24x7 oncall rotation, turned up capacity in response to emergencies, handled DoS configuration and response, and led the Production Readiness Review and trained up the SRE team founded to take on this (and other) mobile services.
 
 ### Cisco Systems (Jul 2005 – Aug 2007)
 

@@ -89,6 +89,8 @@ def render_tex(cv):
     L = []
     contact = [tex(cv["location"]),
                r"\href{mailto:%s}{%s}" % (cv["email"], tex(cv["email"]))]
+    if cv.get("phone"):
+        contact.append(r"\href{%s}{%s}" % (tel(cv["phone"]), tex(cv["phone"])))
     contact += [r"\href{%s}{%s}" % (l["url"], tex(l["label"])) for l in cv["links"]]
     L += [
         "% ---------- HEADER ----------",
@@ -119,7 +121,7 @@ def render_tex(cv):
             L.append("")
 
     L += [r"\section*{Personal Projects}", ""]
-    for i, p in enumerate(cv["projects"]):
+    for i, p in enumerate(cv["personal_projects"]):
         L.append(r"\vspace{%s}" % ("1pt" if i == 0 else "2pt"))
         name = tex(p["name"])
         if p.get("url"):
@@ -157,6 +159,8 @@ def md_dates(x):
 def render_md(cv):
     L = [f"# {cv['name']}", "", cv["headline"], ""]
     L += [f"- Location: {cv['location']}", f"- Email: <{cv['email']}>"]
+    if cv.get("phone"):
+        L.append(f"- Phone: {cv['phone']}")
     L += [f"- [{l['label']}]({l['url']})" for l in cv["links"]]
     L += ["", "## Summary", "", md(cv["summary"]), "",
           "## Technical", "", md(cv["technical"]), "", "## Experience", ""]
@@ -167,7 +171,7 @@ def render_md(cv):
             L += [f"#### {title} ({md_dates(r)})", ""]
             L += [f"- {md(b)}" for b in r["bullets"]] + [""]
     L += ["## Personal Projects", ""]
-    for p in cv["projects"]:
+    for p in cv["personal_projects"]:
         name = f"[{p['name']}]({p['url']})" if p.get("url") else p["name"]
         if p.get("description"):
             name += f": {p['description']}"
@@ -205,6 +209,8 @@ def h_bullets(items):
 
 def render_html(cv):
     contact = [f'<a class="chip" href="mailto:{cv["email"]}">{h(cv["email"])}</a>']
+    if cv.get("phone"):
+        contact.append(f'<a class="chip" href="{tel(cv["phone"])}">{h(cv["phone"])}</a>')
     contact += [f'<a class="chip" href="{l["url"]}">{h(l["label"])}</a>' for l in cv["links"]]
 
     exp = []
@@ -220,7 +226,7 @@ def render_html(cv):
             f'<time>{h_dates(job)}</time></header><ol class="timeline">{"".join(roles)}</ol></article>')
 
     projects = []
-    for p in cv["projects"]:
+    for p in cv["personal_projects"]:
         name = h(p["name"])
         if p.get("url"):
             name = f'<a href="{p["url"]}">{name}</a>'
@@ -257,6 +263,10 @@ def render_html(cv):
     if leftover:
         sys.exit(f"unfilled placeholders in site.html: {leftover}")
     return out
+
+
+def tel(phone):
+    return "tel:" + re.sub(r"[^0-9+]", "", phone)
 
 
 def main():

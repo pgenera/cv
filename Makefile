@@ -2,7 +2,7 @@ NAME  := phil_genera_cv
 BUILD := build
 DIST  := dist
 
-.PHONY: all clean check
+.PHONY: all clean check fmt
 
 all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md check
 
@@ -28,6 +28,9 @@ $(DIST)/$(NAME).md: $(BUILD)/$(NAME).md
 check: $(DIST)/$(NAME).pdf
 	@echo "PDF pages: $$(pdfinfo $(DIST)/$(NAME).pdf | awk '/^Pages:/ {print $$2}')"
 	@echo "Overfull hboxes: $$(grep -c 'Overfull \\hbox' $(BUILD)/$(NAME).log || true)"
+
+fmt:
+	python3 fmt_yaml.py cv.yaml
 
 clean:
 	rm -rf $(BUILD)

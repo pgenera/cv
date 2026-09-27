@@ -13,3 +13,8 @@ project_history_pgenera.md
 
 # Build intermediates
 build/
+
+# Editor backups
+*~
+\#*\#
+.*.swp

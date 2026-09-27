@@ -4,13 +4,16 @@
 #   dist/phil_genera_cv.md    (machine-readable Markdown)
 #
 # Inline markup allowed in any prose field: *emphasis*, **bold**,
-# [text](url), `code`. Use   (in double quotes) for a non-breaking space.
+# [text](url), `code`. Write \u00a0 inside double quotes for a non-breaking space.
+# Long text goes in >- folded blocks, which need no quoting. `make fmt` rewraps.
 # Only verified claims belong here; see CLAUDE.md.
 
 name: Phil Genera
 headline: Infrastructure & Site Reliability Engineering
 location: Cambridge, MA
 email: pg@fivesevenfive.org
+phone: "+1(203)606-4771"
+
 links:
   - label: github.com/pgenera
     url: https://github.com/pgenera
@@ -18,19 +21,20 @@ links:
     url: https://www.linkedin.com/in/pgenera
 
 summary: >-
-  Infrastructure engineer with 19 years at Google, roughly fifteen of them as an individual
-  contributor and tech lead across mobile search, media and storage infrastructure, cloud
-  networking, and healthcare systems, and the last four managing small infrastructure teams.
-  Built the first global load balancing for the L7 proxy fronting Google Cloud, and currently
-  responsible for the reliability and safety of footprint operations across Google's internal
-  continuous-delivery infrastructure. Comfortable at the layer where capacity, traffic
-  management, and failure domains meet, and still writing and shipping systems code outside
-  of work.
+  Infrastructure engineer with 19 years at Google, roughly fifteen of them as an
+  individual contributor and tech lead across mobile search, media and storage
+  infrastructure, cloud networking, and healthcare systems, and the last four managing
+  small infrastructure teams. Built the first global load balancing for the L7 proxy
+  fronting Google Cloud, and currently responsible for the reliability and safety of
+  footprint operations across Google's internal continuous-delivery infrastructure.
+  Expert at the layer where capacity, traffic management, and failure domains meet, and
+  still writing and shipping systems code outside of work.
 
 technical: >-
-  Java, Python, and C++, plus a long tail of domain-specific languages, with recent project work in
-  Kotlin and Go. Routine Linux systems work: nftables, policy routing and BGP, btrfs, tcpdump,
-  netcat. Agentic development with Claude Code and Antigravity. Minor contributions to Envoy.
+  Java, Python, and C++, plus a long tail of domain-specific languages, with recent
+  project work in Kotlin and Go. Routine Linux systems work: nftables, policy routing
+  and BGP, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity.
+  Global and regional load software and softswitch load balancing.
 
 experience:
   - org: Google
@@ -42,41 +46,98 @@ experience:
         start: Feb 2024
         end: Present
         bullets:
-          - Manage the team responsible for footprint operations (turn up, turn down, resize, move) across Google's internal continuous-delivery infrastructure, which actuates the majority of the production footprint.
-          - Own the reliability and safety of those actions. The goal is that routine capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding.
-          - Work on moving footprint changes from operator-driven execution toward automated, gated actuation, so that the scale of a change is bounded by policy rather than by operator attention.
+          - >-
+            Manage the team responsible for footprint operations (turn up, turn down,
+            resize, move) across Google's CD infrastructure, which actuates the majority
+            of the datacenter footprint.
+          - >-
+            Own the reliability and safety of those actions. The goal is that capacity
+            changes cannot take down the services that depend on them, and that unsafe
+            cases fail closed rather than proceeding. Defined and drove progress on
+            customer-centric SLIs, SLOs, and SLAs.
+          - >-
+            Moved footprint changes from operator-driven execution toward automated,
+            gated actuation, so that the scale of a change is bounded by policy rather
+            than by operator attention, and is easier, safer, and faster.
 
-      - title: Senior Site Reliability Engineer, then Site Reliability Engineering Manager
+      - title: >-
+          Senior Site Reliability Engineer, then Site Reliability Engineering Manager
         team: Google for Clinicians
         start: Apr 2021
         end: Feb 2024
         bullets:
-          - SRE for an EHR search and longitudinal health-record research platform serving one of the largest hospital systems in the United States, delivering streaming record updates, normalization, and analysis end to end in minutes.
-          - Took over management of the team in June 2022 while continuing the SRE work. Scope covered HIPAA and related compliance, infrastructure cost, and software engineering productivity.
+          - >-
+            SRE lead for Google's short-lived EHR search and longitudinal health-record
+            product, serving one of the largest hospital systems in the United States,
+            delivering streaming record updates, normalization, enrichment and analysis
+            end to end in minutes.
+          - >-
+            In addition to ETL indexing and search, the import pipeline added AI
+            enrichments to physician notes and test results. Designed, built, and
+            shipped load balancing and traffic management for the enrichment pipeline,
+            delivering significantly higher reliability, lower operator toil, and
+            resiliency against bad input.
+          - >-
+            Took over management of the team in June 2022 while continuing the SRE work.
+            Scope covered HIPAA and related compliance, infrastructure cost, project
+            planning, customer relationships and software engineering productivity.
 
       - title: Senior Software Engineer
         team: Google Cloud Networking
         start: Aug 2017
         end: Apr 2021
         bullets:
-          - Built the first global load balancing for Google's L7 proxy, the tier sitting between Google Cloud and Google production, a large and high-visibility system carrying external traffic into the platform.
-          - "Worked across the proxy and the software-defined networking control plane feeding it, publicly described in *Orion: Google's Software-Defined Networking Control Plane* (NSDI 2021)."
+          - >-
+            Built the first global load balancing for Google's internal L7 proxy
+            (CloudPath, sitting between Google Cloud and Google production), a large and
+            high-reliability component of the Google Cloud Platform.
+          - >-
+            This load balancing project, with others, enabled traffic grown from XX Gbps
+            to XX Tbps, with higher customer reliability, and lower cost.
+          - >-
+            Worked across the proxy and the software-defined networking control plane
+            feeding it, publicly described in *Orion: Google's Software-Defined
+            Networking Control Plane* (NSDI 2021).
 
       - title: Senior Site Reliability Engineer
         team: YouTube & Storage Infrastructure
         start: Nov 2012
         end: Aug 2017
         bullets:
-          - Ran the west-coast side of the SRE team operating YouTube's video transcoding pipeline and upload server. The upload server went on to become Google Cloud Storage.
+          - >-
+            Ran the West Coast side of the SRE team operating YouTube's video
+            transcoding pipeline and upload server, which went on to become Google Cloud
+            Storage.
+          - >-
+            As tech lead for the upload server, led the infrastructure response to the
+            2013 Snowden disclosures for the upload server and GCS.
+          - >-
+            Shared on-call and operational ownership of YouTube uploads, transcoding,
+            Content ID, and streaming infrastructure.
+          - >-
+            Production Readiness Review and SRE onboarding of YouTube Live Streaming
+            infrastructure, which is shared between YouTube, Google Fiber, and YouTube
+            TV.
 
       - title: Software Engineer
         team: Mobile Search
         start: Aug 2007
         end: Nov 2012
         bullets:
-          - Invented *Search with My Location*, the blue dot on the mobile search home page, and co-authored the resulting patent with the product manager for the feature.
-          - Worked on google.com/m, particularly universal and local search, and curated the local search property for several years.
-          - Tech lead for mobile search infrastructure work, including launching ads on new mobile properties.
+          - >-
+            Invented *Search with My Location*, the blue dot on the mobile search home
+            page, and co-authored the resulting patent with the product manager for the
+            feature.
+          - >-
+            Worked on google.com/m, particularly universal and local search, and curated
+            the local search property for several years.
+          - >-
+            Tech lead for mobile search infrastructure work, including launching ads on
+            new mobile properties.
+          - >-
+            24x7 oncall rotation, turned up capacity in response to emergencies, handled
+            DoS configuration and response, and led the Production Readiness Review and
+            trained up the SRE team founded to take on this (and other) mobile services.
 
   - org: Cisco Systems
     start: Jul 2005
@@ -86,37 +147,71 @@ experience:
         start: Jul 2005
         end: Aug 2007
         bullets:
-          - Built monitoring, diagnostics, and modular plugin tooling in Java for enterprise Linux server clusters.
+          - >-
+            Built monitoring, diagnostics, and modular plugin tooling in Java for
+            enterprise Linux server clusters.
 
-projects:
+personal_projects:
   - name: wearvian
     url: https://github.com/pgenera/wearvian
     description: Wear OS phone key for Rivian R1 vehicles
     dates: "2026"
     bullets:
-      - "Wear OS app that functions as a Rivian phone key over Bluetooth LE: passive entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge port, and climate commands. Confirmed working on a Gen-1 R1S."
-      - "Reverse engineered the vehicle's phone-key protocol and documented it: the pairing handshake, the authenticated ranging heartbeat that passive entry actually keys on rather than OS-level bonding, AES-GCM command framing, and the status stream that drives live lock, closure, charge, and range display."
-      - Wrote `core-crypto`, a standalone Kotlin/JVM module implementing secp256r1, ECDH, HKDF-SHA256, HMAC, and AES-GCM command frames, verified against known-answer parity tests.
-      - "Built for offline operation and key custody: the watch holds no `INTERNET` permission and its private key never leaves the device, with a [companion phone app](https://github.com/pgenera/wearvian-companion) performing the one-time cloud enrollment over the Wear OS Data Layer."
-      - Power-saving passive mode releases the wake lock and tears down the radio when idle, with a hardware-offloaded scan rebuilding the link on approach.
+      - >-
+        Wear OS app that functions as a Rivian phone key over Bluetooth LE: passive
+        entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge
+        port, and climate commands. Confirmed working on a Gen-1 R1S.
+      - >-
+        Reverse engineered the vehicle's phone-key protocol and documented it: the
+        pairing handshake, the authenticated ranging heartbeat that passive entry
+        actually keys on rather than OS-level bonding, AES-GCM command framing, and the
+        status stream that drives live lock, closure, charge, and range display.
+      - >-
+        Wrote `core-crypto`, a standalone Kotlin/JVM module implementing secp256r1,
+        ECDH, HKDF-SHA256, HMAC, and AES-GCM command frames, verified against
+        known-answer parity tests.
+      - >-
+        Built for offline operation and key custody: the watch holds no `INTERNET`
+        permission and its private key never leaves the device, with a [companion phone
+        app](https://github.com/pgenera/wearvian-companion) performing the one-time
+        cloud enrollment over the Wear OS Data Layer.
+      - >-
+        Power-saving passive mode releases the wake lock and tears down the radio when
+        idle, with a hardware-offloaded scan rebuilding the link on approach.
 
   - name: mpubsub
     url: https://github.com/pgenera/esphome-mpubsub
     description: brokerless IPv6 multicast pub/sub transport
     dates: "2026"
     bullets:
-      - "Publish/subscribe transport with no broker: each topic maps deterministically to an IPv6 multicast group derived from a SHA-256 of the topic name, so publishers and subscribers rendezvous without coordination and the fabric survives losing the WAN."
-      - Wire protocol with a 12-byte header, CRC-32 topic disambiguation, and optional authenticated encryption, shipped as an ESPHome component in C++, a Home Assistant integration in Python, a Go bridge to MQTT, and a Python reference implementation.
+      - >-
+        Publish/subscribe transport with no broker: each topic maps deterministically to
+        an IPv6 multicast group derived from a SHA-256 of the topic name, so publishers
+        and subscribers rendezvous without coordination and the fabric survives losing
+        the WAN.
+      - >-
+        Wire protocol with a 12-byte header, CRC-32 topic disambiguation, and optional
+        authenticated encryption, shipped as an ESPHome component in C++, a Home
+        Assistant integration in Python, a Go bridge to MQTT, and a Python reference
+        implementation.
 
   - name: Home network and radio infrastructure
     dates: ongoing
     bullets:
-      - Linux-routed network with policy-based routing, inter-VLAN routing across segments drawn well past the point of necessity (roughly one VLAN per resident), an nftables trust-zone ruleset, IPv6 tunneling, and BGP-announced AMPRNet (44/8) address space.
-      - Survey-calibrated u-blox GPS timing receiver on gpsd, with custom Python tooling for the UBX configuration the standard utilities do not reach.
+      - >-
+        Linux-routed network with policy-based routing, inter-VLAN routing across
+        segments drawn well past the point of necessity (roughly one VLAN per resident),
+        an nftables trust-zone ruleset, IPv6 tunneling, and BGP-announced AMPRNet (44/8)
+        address space.
+      - >-
+        Survey-calibrated u-blox GPS timing receiver on gpsd, with custom Python tooling
+        for the UBX configuration the standard utilities do not reach.
 
 publications:
-  - "[US Patent 9,081,860](https://patents.google.com/patent/US9081860B2/en), *Integration of Device Location into Search* (filed 2008, issued 2015), co-inventor."
-  - "[*Self-Organizing Publish/Subscribe on the Network Edge*](https://www.tdcommons.org/dpubs_series/5601), Technical Disclosure Commons, Art. 5601 (2022)."
+  - >-
+    [US Patent 9,081,860](https://patents.google.com/patent/US9081860B2/en),
+    *Integration of Device Location into Search* (filed 2008, issued 2015), co-inventor.
+  - "[*Self-Organizing Publish/Subscribe on the Network Edge*](https://www.tdcommons.org/dpubs_series/5601), Technical Disclosure Commons, Art.\u00a05601 (2022)."
 
 education:
   - school: Rensselaer Polytechnic Institute
@@ -125,6 +220,9 @@ education:
     end: "2005"
 
 additional:
-  - Amateur radio operator. Volunteers at the Boston Marathon as third-tier communications from a course medical tent, handling medical resupply and sweep bus traffic within the event's incident command structure.
+  - >-
+    Amateur radio operator. Volunteers at the Boston Marathon as third-tier
+    communications from a course medical tent, handling medical resupply and sweep bus
+    traffic within the event's incident command structure.
   - Powerlifting, running, and long-distance motorcycling.
   - Eagle Scout.
