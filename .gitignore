@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# LLM-generated source exports (unverified, contain internal history)
+google_resume_internal.html
+linkedin_profile.html
+resume_external.html
+project_history_pgenera.md
