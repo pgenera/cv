@@ -89,5 +89,5 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 ## Additional
 
-- Amateur radio operator. Volunteers at the Boston Marathon as  communications from a medical tent, handling medical resupply and sweep bus traffic within the event's incident command structure.
+- Volunteers at the Boston Marathon as an Amateur Radio Operator at a medical tent, handling medical resupply and sweep bus traffic within the event's incident command structure.
 - Powerlifting, running, and endurance motorcycling. Eagle Scout.
