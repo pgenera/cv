@@ -10,3 +10,6 @@ google_resume_internal.html
 linkedin_profile.html
 resume_external.html
 project_history_pgenera.md
+
+# Build intermediates
+build/

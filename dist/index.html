@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phil Genera</title>
+<meta name="description" content="Infrastructure &amp; Site Reliability Engineering. Infrastructure engineer with 19 years at Google, roughly fifteen of them as an individual contributor and tech lead across mobile search, media and storage infrastructure, cloud networking, and healthcare systems, and the last four managing small infrastructure teams.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%234285f4' fill-opacity='.25'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%23fff'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%234285f4'/%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #fbf7f0;
+  --bg-soft: #f3ece0;
+  --card: #fffdf9;
+  --ink: #1f1c18;
+  --muted: #6d655a;
+  --rule: #e4dac9;
+  --dot: #3b7cf5;
+  --dot-halo: rgba(59, 124, 245, .22);
+  --warm: #e8603c;
+  --warm-soft: rgba(232, 96, 60, .12);
+  --sun: #f2b53a;
+  --shadow: 0 1px 2px rgba(60, 40, 20, .06), 0 8px 24px -12px rgba(60, 40, 20, .18);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, ui-serif, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171b;
+    --bg-soft: #1c1f25;
+    --card: #1e2128;
+    --ink: #ece7de;
+    --muted: #a39b8f;
+    --rule: #2f333b;
+    --dot: #6ea0ff;
+    --dot-halo: rgba(110, 160, 255, .22);
+    --warm: #ff8a65;
+    --warm-soft: rgba(255, 138, 101, .14);
+    --sun: #f5c65b;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -14px rgba(0, 0, 0, .6);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15171b;
+  --bg-soft: #1c1f25;
+  --card: #1e2128;
+  --ink: #ece7de;
+  --muted: #a39b8f;
+  --rule: #2f333b;
+  --dot: #6ea0ff;
+  --dot-halo: rgba(110, 160, 255, .22);
+  --warm: #ff8a65;
+  --warm-soft: rgba(255, 138, 101, .14);
+  --sun: #f5c65b;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 10px 28px -14px rgba(0, 0, 0, .6);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.6 var(--sans);
+  transition: background-color .3s, color .3s;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  background: linear-gradient(var(--warm), var(--warm)) 0 100% / 100% 2px no-repeat;
+  transition: background-size .2s, color .2s;
+}
+a:hover { color: var(--warm); background-size: 100% 100%; background-image: linear-gradient(var(--warm-soft), var(--warm-soft)); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--dot); outline-offset: 3px; border-radius: 4px; }
+code { font: .88em var(--mono); background: var(--bg-soft); padding: .1em .35em; border-radius: 4px; }
+time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .9rem; white-space: nowrap; }
+
+.wrap { max-width: 50rem; margin: 0 auto; padding: 0 16px; }
+
+/* ---------- hero ---------- */
+.hero { padding: 4.5rem 0 2.5rem; position: relative; }
+.hero h1 {
+  font: 600 clamp(2.4rem, 8vw, 4rem)/1.05 var(--serif);
+  letter-spacing: -.02em;
+  margin: 0 0 .6rem;
+  display: flex; align-items: center; gap: .9rem;
+}
+.dot {
+  position: relative; flex: none;
+  width: .42em; height: .42em; border-radius: 50%;
+  background: var(--dot);
+  box-shadow: 0 0 0 .07em var(--card), 0 1px 4px rgba(0,0,0,.25);
+}
+.dot::before {
+  content: ""; position: absolute; inset: -.5em; border-radius: 50%;
+  background: var(--dot-halo);
+  animation: ping 2.8s ease-out infinite;
+}
+@keyframes ping {
+  0% { transform: scale(.3); opacity: 1; }
+  80%, 100% { transform: scale(1.4); opacity: 0; }
+}
+.headline { font-size: clamp(1.1rem, 3.2vw, 1.3rem); color: var(--muted); margin: 0 0 1.4rem; }
+.contact { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; }
+.chip, .loc {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .35rem .8rem; border-radius: 999px;
+  font-size: .9rem; border: 1px solid var(--rule); background: var(--card);
+}
+.chip { background-image: none; transition: transform .15s, border-color .15s, color .15s; }
+.chip:hover { transform: translateY(-2px); border-color: var(--warm); background: var(--card); }
+.loc { color: var(--muted); }
+
+.theme {
+  position: absolute; top: 1.2rem; right: 0;
+  width: 2.4rem; height: 2.4rem; border-radius: 50%;
+  border: 1px solid var(--rule); background: var(--card); color: var(--ink);
+  cursor: pointer; display: grid; place-items: center;
+  transition: transform .3s;
+}
+.theme:hover { transform: rotate(25deg); }
+.theme svg { width: 1.2rem; height: 1.2rem; }
+.theme .moon { display: none; }
+:root[data-theme="dark"] .theme .sun { display: none; }
+:root[data-theme="dark"] .theme .moon { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme .sun { display: none; }
+  :root:not([data-theme="light"]) .theme .moon { display: block; }
+}
+
+/* ---------- sections ---------- */
+section { padding: 1.6rem 0; }
+h2 {
+  font: 600 .8rem/1 var(--sans);
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--warm);
+  margin: 0 0 1.2rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.lede { font: 1.2rem/1.6 var(--serif); margin: 0; }
+section > p { margin: 0; }
+
+ul { margin: .5rem 0 0; padding-left: 1.1rem; }
+li { margin: .3rem 0; }
+li::marker { color: var(--warm); }
+
+/* ---------- experience ---------- */
+.employer + .employer { margin-top: 2rem; }
+.employer-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.employer-head h3 { font: 600 1.6rem/1.2 var(--serif); margin: 0; }
+.timeline { list-style: none; margin: 0; padding: 0 0 0 1.6rem; position: relative; }
+.timeline::before {
+  content: ""; position: absolute; left: .4rem; top: .6rem; bottom: .6rem; width: 2px;
+  background: linear-gradient(var(--dot), var(--warm));
+  border-radius: 2px; opacity: .5;
+}
+.role { position: relative; padding: .2rem 0 1.2rem; margin: 0; }
+.role::before {
+  content: ""; position: absolute; left: -1.6rem; top: .5rem;
+  width: .9rem; height: .9rem; border-radius: 50%;
+  background: var(--bg); border: 3px solid var(--dot);
+  transition: background .2s, transform .2s;
+}
+.role:first-child::before { background: var(--dot); box-shadow: 0 0 0 5px var(--dot-halo); }
+.role:hover::before { background: var(--warm); border-color: var(--warm); transform: scale(1.2); }
+.role-head { display: grid; grid-template-columns: 1fr auto; column-gap: 1rem; align-items: baseline; }
+.role-head h4 { font-size: 1.05rem; margin: 0; line-height: 1.35; }
+.role-head .team { grid-column: 1; color: var(--muted); font-size: .95rem; }
+.role-head time { grid-column: 2; grid-row: 1; }
+.role li::marker { color: var(--dot); }
+
+/* ---------- projects ---------- */
+.cards { display: grid; gap: 1rem; }
+.card {
+  background: var(--card); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 1.2rem 1.3rem; box-shadow: var(--shadow);
+  transition: transform .2s, border-color .2s;
+}
+.card:hover { transform: translateY(-3px) rotate(-.25deg); border-color: var(--sun); }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.card h3 { font: 600 1.3rem/1.2 var(--serif); margin: 0; }
+.card .desc { margin: .2rem 0 0; color: var(--muted); }
+
+.edu p { margin: 0; }
+.edu time { margin-left: .5rem; }
+
+footer {
+  margin-top: 2rem; padding: 2rem 0 3rem; border-top: 1px solid var(--rule);
+  color: var(--muted); font-size: .9rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .8rem;
+}
+footer nav { display: flex; gap: 1rem; }
+
+/* ---------- motion ---------- */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.seen { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .hero { padding-top: 4rem; }
+  .role-head { grid-template-columns: 1fr; }
+  .role-head time { grid-column: 1; grid-row: auto; }
+  .card-head { flex-direction: column; gap: 0; }
+}
+
+@media print {
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .theme, footer nav, .dot::before { display: none; }
+  .js .reveal { opacity: 1; transform: none; }
+  .card { box-shadow: none; break-inside: avoid; }
+  a { background: none; }
+}
+</style>
+<script>
+  document.documentElement.classList.add("js");
+  try {
+    var t = localStorage.getItem("theme");
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <button class="theme" type="button" aria-label="Toggle dark mode">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+    </button>
+    <h1><span class="dot" aria-hidden="true" title="Search with My Location"></span>Phil Genera</h1>
+    <p class="headline">Infrastructure &amp; Site Reliability Engineering</p>
+    <div class="contact">
+      <span class="loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Cambridge, MA</span>
+      <a class="chip" href="mailto:pg@fivesevenfive.org">pg@fivesevenfive.org</a><a class="chip" href="https://github.com/pgenera">github.com/pgenera</a><a class="chip" href="https://www.linkedin.com/in/pgenera">linkedin.com/in/pgenera</a>
+    </div>
+  </header>
+
+  <section class="reveal">
+    <h2>Summary</h2>
+    <p class="lede">Infrastructure engineer with 19 years at Google, roughly fifteen of them as an individual contributor and tech lead across mobile search, media and storage infrastructure, cloud networking, and healthcare systems, and the last four managing small infrastructure teams. Built the first global load balancing for the L7 proxy fronting Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Comfortable at the layer where capacity, traffic management, and failure domains meet, and still writing and shipping systems code outside of work.</p>
+  </section>
+
+  <section class="reveal">
+    <h2>Technical</h2>
+    <p>Java, Python, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Routine Linux systems work: nftables, policy routing and BGP, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity. Minor contributions to Envoy.</p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <article class="employer"><header class="employer-head"><h3>Google</h3><time>Aug 2007&ndash;Present</time></header><ol class="timeline"><li class="role reveal"><div class="role-head"><h4>Software Engineering Manager</h4><span class="team">Continuous Delivery Infrastructure</span><time>Feb 2024&ndash;Present</time></div><ul><li>Manage the team responsible for footprint operations (turn up, turn down, resize, move) across Google's internal continuous-delivery infrastructure, which actuates the majority of the production footprint.</li><li>Own the reliability and safety of those actions. The goal is that routine capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding.</li><li>Work on moving footprint changes from operator-driven execution toward automated, gated actuation, so that the scale of a change is bounded by policy rather than by operator attention.</li></ul></li><li class="role reveal"><div class="role-head"><h4>Senior Site Reliability Engineer, then Site Reliability Engineering Manager</h4><span class="team">Google for Clinicians</span><time>Apr 2021&ndash;Feb 2024</time></div><ul><li>SRE for an EHR search and longitudinal health-record research platform serving one of the largest hospital systems in the United States, delivering streaming record updates, normalization, and analysis end to end in minutes.</li><li>Took over management of the team in June 2022 while continuing the SRE work. Scope covered HIPAA and related compliance, infrastructure cost, and software engineering productivity.</li></ul></li><li class="role reveal"><div class="role-head"><h4>Senior Software Engineer</h4><span class="team">Google Cloud Networking</span><time>Aug 2017&ndash;Apr 2021</time></div><ul><li>Built the first global load balancing for Google's L7 proxy, the tier sitting between Google Cloud and Google production, a large and high-visibility system carrying external traffic into the platform.</li><li>Worked across the proxy and the software-defined networking control plane feeding it, publicly described in <em>Orion: Google's Software-Defined Networking Control Plane</em> (NSDI 2021).</li></ul></li><li class="role reveal"><div class="role-head"><h4>Senior Site Reliability Engineer</h4><span class="team">YouTube &amp; Storage Infrastructure</span><time>Nov 2012&ndash;Aug 2017</time></div><ul><li>Ran the west-coast side of the SRE team operating YouTube's video transcoding pipeline and upload server. The upload server went on to become Google Cloud Storage.</li></ul></li><li class="role reveal"><div class="role-head"><h4>Software Engineer</h4><span class="team">Mobile Search</span><time>Aug 2007&ndash;Nov 2012</time></div><ul><li>Invented <em>Search with My Location</em>, the blue dot on the mobile search home page, and co-authored the resulting patent with the product manager for the feature.</li><li>Worked on google.com/m, particularly universal and local search, and curated the local search property for several years.</li><li>Tech lead for mobile search infrastructure work, including launching ads on new mobile properties.</li></ul></li></ol></article><article class="employer"><header class="employer-head"><h3>Cisco Systems</h3><time>Jul 2005&ndash;Aug 2007</time></header><ol class="timeline"><li class="role reveal"><div class="role-head"><h4>Software Engineer</h4><time>Jul 2005&ndash;Aug 2007</time></div><ul><li>Built monitoring, diagnostics, and modular plugin tooling in Java for enterprise Linux server clusters.</li></ul></li></ol></article>
+  </section>
+
+  <section>
+    <h2>Personal Projects</h2>
+    <div class="cards"><article class="card reveal"><div class="card-head"><h3><a href="https://github.com/pgenera/wearvian">wearvian</a></h3><time>2026</time></div><p class="desc">Wear OS phone key for Rivian R1 vehicles</p><ul><li>Wear OS app that functions as a Rivian phone key over Bluetooth LE: passive entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge port, and climate commands. Confirmed working on a Gen-1 R1S.</li><li>Reverse engineered the vehicle's phone-key protocol and documented it: the pairing handshake, the authenticated ranging heartbeat that passive entry actually keys on rather than OS-level bonding, AES-GCM command framing, and the status stream that drives live lock, closure, charge, and range display.</li><li>Wrote <code>core-crypto</code>, a standalone Kotlin/JVM module implementing secp256r1, ECDH, HKDF-SHA256, HMAC, and AES-GCM command frames, verified against known-answer parity tests.</li><li>Built for offline operation and key custody: the watch holds no <code>INTERNET</code> permission and its private key never leaves the device, with a <a href="https://github.com/pgenera/wearvian-companion">companion phone app</a> performing the one-time cloud enrollment over the Wear OS Data Layer.</li><li>Power-saving passive mode releases the wake lock and tears down the radio when idle, with a hardware-offloaded scan rebuilding the link on approach.</li></ul></article><article class="card reveal"><div class="card-head"><h3><a href="https://github.com/pgenera/esphome-mpubsub">mpubsub</a></h3><time>2026</time></div><p class="desc">brokerless IPv6 multicast pub/sub transport</p><ul><li>Publish/subscribe transport with no broker: each topic maps deterministically to an IPv6 multicast group derived from a SHA-256 of the topic name, so publishers and subscribers rendezvous without coordination and the fabric survives losing the WAN.</li><li>Wire protocol with a 12-byte header, CRC-32 topic disambiguation, and optional authenticated encryption, shipped as an ESPHome component in C++, a Home Assistant integration in Python, a Go bridge to MQTT, and a Python reference implementation.</li></ul></article><article class="card reveal"><div class="card-head"><h3>Home network and radio infrastructure</h3><time>ongoing</time></div><ul><li>Linux-routed network with policy-based routing, inter-VLAN routing across segments drawn well past the point of necessity (roughly one VLAN per resident), an nftables trust-zone ruleset, IPv6 tunneling, and BGP-announced AMPRNet (44/8) address space.</li><li>Survey-calibrated u-blox GPS timing receiver on gpsd, with custom Python tooling for the UBX configuration the standard utilities do not reach.</li></ul></article></div>
+  </section>
+
+  <section class="reveal">
+    <h2>Patents &amp; Publications</h2>
+    <ul><li><a href="https://patents.google.com/patent/US9081860B2/en">US Patent 9,081,860</a>, <em>Integration of Device Location into Search</em> (filed 2008, issued 2015), co-inventor.</li><li><a href="https://www.tdcommons.org/dpubs_series/5601"><em>Self-Organizing Publish/Subscribe on the Network Edge</em></a>, Technical Disclosure Commons, Art.&nbsp;5601 (2022).</li></ul>
+  </section>
+
+  <section class="reveal edu">
+    <h2>Education</h2>
+    <p><strong>Rensselaer Polytechnic Institute</strong> <time>2001&ndash;2005</time><br>B.S., Computer Science &amp; Psychology</p>
+  </section>
+
+  <section class="reveal">
+    <h2>Additional</h2>
+    <ul><li>Amateur radio operator. Volunteers at the Boston Marathon as third-tier communications from a course medical tent, handling medical resupply and sweep bus traffic within the event's incident command structure.</li><li>Powerlifting, running, and long-distance motorcycling.</li><li>Eagle Scout.</li></ul>
+  </section>
+
+  <footer>
+    <span>Updated 2026-09-27</span>
+    <nav><a href="phil_genera_cv.pdf">PDF</a><a href="phil_genera_cv.md">Markdown</a></nav>
+  </footer>
+</main>
+<script>
+  (function () {
+    var root = document.documentElement;
+    document.querySelector(".theme").addEventListener("click", function () {
+      var dark = root.dataset.theme
+        ? root.dataset.theme === "dark"
+        : matchMedia("(prefers-color-scheme: dark)").matches;
+      root.dataset.theme = dark ? "light" : "dark";
+      try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    });
+
+    var els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function (el) { el.classList.add("seen"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("seen"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>
