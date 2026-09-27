@@ -14,6 +14,8 @@ from pathlib import Path
 
 import yaml
 
+import boston_map
+
 ROOT = Path(__file__).parent
 TEMPLATES = ROOT / "templates"
 BASENAME = "phil_genera_cv"
@@ -208,32 +210,6 @@ def h_bullets(items):
     return "<ul>" + "".join(f"<li>{h(b)}</li>" for b in items) + "</ul>"
 
 
-def map_svg():
-    """Abstract street map for the hero: two street grids at different angles,
-    a few arterials, a river, and two parks. Purely decorative."""
-    W, H = 1440, 460
-    o = [f'<svg class="map" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid slice" '
-         'aria-hidden="true" focusable="false">',
-         '<defs><clipPath id="ga"><path d="M0 0H820L640 460H0Z"/></clipPath>'
-         '<clipPath id="gb"><path d="M820 0H1440V460H640Z"/></clipPath></defs>',
-         '<path class="m-park" d="M150 250l130-30 40 110-140 30z"/>',
-         '<path class="m-park" d="M1215 175l125-22 22 84-128 22z"/>']
-    for clip, (angle, cx, dx, dy) in (("ga", (-17, 400, 92, 118)), ("gb", (9, 1100, 104, 86))):
-        lines = [f"M{x} -700V1200" for x in range(-700, 2200, dx)]
-        lines += [f"M-700 {y}H2200" for y in range(-700, 1200, dy)]
-        o.append(f'<g clip-path="url(#{clip})"><path class="m-minor" '
-                 f'transform="rotate({angle} {cx} 230)" d="{"".join(lines)}"/></g>')
-    o.append('<path class="m-water" stroke-width="64" '
-             'd="M540 540C760 430 900 385 1060 352S1330 292 1500 322"/>')
-    majors = ("M-20 122C300 92 600 182 860 142S1250 62 1460 92",
-              "M772 -20C730 150 690 300 612 480",
-              "M960 480C1050 380 1170 300 1260 -20")
-    o += [f'<path class="m-major-edge" d="{d}"/>' for d in majors]
-    o += [f'<path class="m-major" d="{d}"/>' for d in majors]
-    o.append("</svg>")
-    return "".join(o)
-
-
 def font_b64(name):
     return base64.b64encode((TEMPLATES / "fonts" / name).read_bytes()).decode()
 
@@ -274,7 +250,7 @@ def render_html(cv):
     fills = {
         "FONT_ROMAN": font_b64("overpass-latin-wght-normal.woff2"),
         "FONT_ITALIC": font_b64("overpass-latin-wght-italic.woff2"),
-        "MAP": map_svg(),
+        "MAP": boston_map.svg(h(cv["location"])),
         "NAME": h(cv["name"]),
         "TITLE": html.escape(cv["name"]),
         "DESCRIPTION": html.escape(plain(cv["headline"]) + ". " + plain(cv["summary"]).split(". ")[0] + "."),

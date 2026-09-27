@@ -63,7 +63,7 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 ### [wearvian](https://github.com/pgenera/wearvian): Wear OS phone key for Rivian R1 vehicles (2026)
 
-- Wear OS app that functions as a Rivian phone key over Bluetooth LE: passive entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge port, and climate commands. Confirmed working on a Gen-1 R1S.
+- Wear OS app that functions as a Rivian phone key over Bluetooth LE: passive entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge port, and climate commands.
 - Reverse engineered the vehicle's phone-key protocol and documented it: the pairing handshake, the authenticated ranging heartbeat that passive entry actually keys on rather than OS-level bonding, AES-GCM command framing, and the status stream that drives live lock, closure, charge, and range display.
 - Wrote `core-crypto`, a standalone Kotlin/JVM module implementing secp256r1, ECDH, HKDF-SHA256, HMAC, and AES-GCM command frames, verified against known-answer parity tests.
 - Built for offline operation and key custody: the watch holds no `INTERNET` permission and its private key never leaves the device, with a [companion phone app](https://github.com/pgenera/wearvian-companion) performing the one-time cloud enrollment over the Wear OS Data Layer.
@@ -89,6 +89,5 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 ## Additional
 
-- Amateur radio operator. Volunteers at the Boston Marathon as third-tier communications from a course medical tent, handling medical resupply and sweep bus traffic within the event's incident command structure.
-- Powerlifting, running, and long-distance motorcycling.
-- Eagle Scout.
+- Amateur radio operator. Volunteers at the Boston Marathon as  communications from a medical tent, handling medical resupply and sweep bus traffic within the event's incident command structure.
+- Powerlifting, running, and endurance motorcycling. Eagle Scout.

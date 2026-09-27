@@ -6,7 +6,7 @@ DIST  := dist
 
 all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md check
 
-$(BUILD)/$(NAME).tex $(BUILD)/index.html $(BUILD)/$(NAME).md &: cv.yaml build.py templates/cv.tex templates/site.html
+$(BUILD)/$(NAME).tex $(BUILD)/index.html $(BUILD)/$(NAME).md &: cv.yaml build.py boston_map.py templates/cv.tex templates/site.html $(wildcard templates/fonts/*.woff2)
 	python3 build.py cv.yaml $(BUILD)
 
 # Two passes so hyperref's bookmarks settle.
