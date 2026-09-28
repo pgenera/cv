@@ -143,7 +143,15 @@ def render_tex(cv):
               r"\textit{\small %s}" % tex(e["degree"])]
     L.append("")
 
-    L += [r"\section*{Additional}"] + tex_bullets(cv["additional"])
+    L += [r"\section*{Additional}", r"\begin{itemize}"]
+    for a in cv["additional"]:
+        if isinstance(a, dict):
+            # Same layout as \role: text wraps in the left 79%, date top-right.
+            L.append(r"  \item \begin{tabular*}{\linewidth}[t]{@{}p{0.79\linewidth}@{\extracolsep{\fill}}r@{}}"
+                     + tex(a["text"]) + r" & \textit{%s}\end{tabular*}" % tex_dates(a))
+        else:
+            L.append(r"  \item " + tex(a))
+    L.append(r"\end{itemize}")
 
     tpl = (TEMPLATES / "cv.tex").read_text()
     return tpl.replace("<<NAME>>", tex(cv["name"])).replace("<<BODY>>", "\n".join(L))
@@ -185,7 +193,8 @@ def render_md(cv):
     L += ["## Education", ""]
     L += [f"- {e['school']}, {e['degree']} ({md_dates(e)})" for e in cv["education"]] + [""]
     L += ["## Additional", ""]
-    L += [f"- {md(b)}" for b in cv["additional"]] + [""]
+    L += [f"- {md(a['text'])} ({md_dates(a)})" if isinstance(a, dict) else f"- {md(a)}"
+          for a in cv["additional"]] + [""]
     return "\n".join(L)
 
 
@@ -263,7 +272,9 @@ def render_html(cv):
         "PROJECTS": "".join(projects),
         "PUBLICATIONS": h_bullets(cv["publications"]),
         "EDUCATION": edu,
-        "ADDITIONAL": h_bullets(cv["additional"]),
+        "ADDITIONAL": "<ul>" + "".join(
+            f'<li>{h(a["text"])} <time class="when">{h_dates(a)}</time></li>' if isinstance(a, dict)
+            else f"<li>{h(a)}</li>" for a in cv["additional"]) + "</ul>",
         "BASENAME": BASENAME,
         "BUILT": date.today().isoformat(),
     }
