@@ -10,7 +10,7 @@ Infrastructure & Site Reliability Engineer
 
 ## Summary
 
-Infrastructure engineer with 19 years at Google as an expert at the layer where capacity, traffic management, and failure domains meet. 15 years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location, and an additional 4 years managing small infrastructure teams while still writing and shipping systems code. Built the first global load balancing for the L7 proxy fronting Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Still writing and shipping systems code outside of work.
+Infrastructure engineer with 19 years at Google as an expert at the layer where capacity, traffic management, and failure domains meet. 15 years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location, and an additional 4 years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure.
 
 ## Technical
 
