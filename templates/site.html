@@ -129,7 +129,10 @@ p { margin: 0; }
 .wrap { max-width: calc(var(--rail) + var(--gap) + 42rem + 32px); margin: 0 auto; padding: 0 16px; }
 
 /* ---------- hero: the map ---------- */
-.hero { --hero-h: clamp(300px, 52vh, 485px); position: relative; height: var(--hero-h); background: var(--land); overflow: hidden; overflow: clip; }
+/* Desktop: the hero keeps the map's own proportions as the window widens, so
+   the map isn't cropped, up to 70% of the window height or 900px. Past that the
+   map is cropped from the bottom (see preserveAspectRatio in boston_map.py). */
+.hero { --hero-h: clamp(300px, {{MAP_ASPECT_VW}}, min(70vh, 900px)); position: relative; height: var(--hero-h); background: var(--land); overflow: hidden; overflow: clip; }
 /* The map is sticky inside a track that is taller than the hero by --hold (set
    once by script: the distance from the dot down to the name). The browser
    keeps it pinned while the page scrolls over it, on the compositor, then lets
@@ -277,6 +280,7 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
   .stop::before { left: -1.7rem; top: 1.55rem; }
   .stop > time { padding: 0; }
   .stop > div { grid-column: 1; }
+  .hero { --hero-h: clamp(300px, 52vh, 485px); }
   .fix { --s: 1.45; }
   /* Phones: size the map to the hero height and center the crop between
      downtown Boston and Beverly (--focus-x comes from the map data). */

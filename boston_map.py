@@ -20,7 +20,9 @@ LAYERS = [
 
 def svg(place_label):
     v, home = DATA["view"], DATA["home"]
-    o = [f'<svg class="map" viewBox="0 0 {v["W"]} {v["H"]}" preserveAspectRatio="xMidYMid slice" '
+    # xMidYMin: if a wide, short window forces a crop, it comes off the bottom so
+    # the dot, near the top, stays visible.
+    o = [f'<svg class="map" viewBox="0 0 {v["W"]} {v["H"]}" preserveAspectRatio="xMidYMin slice" '
          f'style="--focus-x: {DATA.get("focus_x", 50)}%; --map-ratio: {v["W"]} / {v["H"]}" '
          'aria-hidden="true" focusable="false">']
     for key, cls in LAYERS:

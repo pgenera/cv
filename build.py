@@ -287,6 +287,7 @@ def render_html(cv):
         "FONT_ROMAN": font_b64("overpass-latin-wght-normal.woff2"),
         "FONT_ITALIC": font_b64("overpass-latin-wght-italic.woff2"),
         "MAP": boston_map.svg(h(cv["location"])),
+        "MAP_ASPECT_VW": f'{boston_map.DATA["view"]["H"] / boston_map.DATA["view"]["W"] * 100:.2f}vw',
         "NAME": h(cv["name"]),
         "TITLE": html.escape(cv["name"]),
         "DESCRIPTION": html.escape(plain(cv["headline"]) + ". " + plain(cv["summary"]).split(". ")[0] + "."),
