@@ -22,16 +22,16 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 #### Software Engineering Manager, Continuous Delivery Infrastructure (Feb 2024 – Present)
 
-- Manage the team responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint.
-- Own the reliability and safety of those actions. With the goal that capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding. Defined and drove progress on customer-centric SLIs, SLOs, and SLAs. 79% lower failure rate in 2 years.
-- Moved footprint changes from operator-driven execution toward automated, continuous actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
+- Manage the team of 10 responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint.
+- Improved the reliability (by 79% fewer failures) and safety of those actions. With the goal that capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding. Negotiated, defined and drove progress on customer-centric SLIs, SLOs, and SLAs.
+- Moved footprint changes from operator-driven execution to automated, continuous actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
 - Responsible for the oncall team in US-East. Training up new members, managing workload with the global team, and training the team on the Incident Command System annually.
 
 #### Staff Site Reliability Engineer, Google for Clinicians (Apr 2021 – Feb 2024)
 
 - SRE lead for Google's EHR search and longitudinal health-record product Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment and analysis from bedside to serving in minutes.
 - In addition to ETL indexing and search, the import pipeline added AI enrichments to physician notes and test results. Designed, built, and shipped load balancing and traffic management for the enrichment pipeline, delivering significantly higher reliability, lower operator toil, and resiliency against bad input.
-- Took over management of the team in June 2022 while continuing SRE work. The scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships, and software engineering productivity.
+- Took over management of the team of 5 in June 2022 while continuing SRE work. The scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships, and software engineering productivity.
 
 #### Senior Software Engineer, Google Cloud Networking (Aug 2017 – Apr 2021)
 
