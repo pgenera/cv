@@ -160,11 +160,14 @@ p { margin: 0; }
   font: 700 15px "Overpass", system-ui, sans-serif; fill: var(--ink);
   paint-order: stroke; stroke: var(--label-halo); stroke-width: 5px; stroke-linejoin: round;
 }
+.fix .place { transition: opacity .3s ease; }
+.fix .place.occluded { opacity: 0; }
 .fix .acc, .fix .dot { transform-box: fill-box; transform-origin: center; }
 @media (prefers-reduced-motion: no-preference) {
   .fix .acc { animation: acquire 1.8s cubic-bezier(.2, .7, .15, 1) .2s both; }
   .fix .dot { animation: land .45s cubic-bezier(.3, 1.6, .5, 1) 1.5s both; }
-  .fix .place { animation: appear .5s ease-out 1.85s both; }
+  /* backwards, not both: once it has faded in, opacity is free for .occluded. */
+  .fix .place { animation: appear .5s ease-out 1.85s backwards; }
 }
 @keyframes acquire {
   0% { transform: scale(4.2); opacity: 0; }
@@ -374,8 +377,40 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
       var dotInMap = anchor.getScreenCTM().f - map.getBoundingClientRect().top,
           s = sub.getBoundingClientRect(),
           subInHero = s.top + s.height / 2 - hero.getBoundingClientRect().top;
-      hero.style.setProperty("--hold", Math.max(0, subInHero - dotInMap) + "px");
+      var hold = Math.max(0, subInHero - dotInMap);
+      hero.style.setProperty("--hold", hold + "px");
+      fadeAt = occlusionStart(hold);
+      checkFade();
     }
+
+    // The place label rides down with the map. If, before the hold runs out,
+    // it would pass behind the name or subtitle, fade it out just before it
+    // gets there. Uses the text's actual line boxes, not the full-width block.
+    var place = hero.querySelector(".fix .place"), fadeAt = Infinity;
+    function occlusionStart(hold) {
+      if (!place) return Infinity;
+      var heroTop = hero.getBoundingClientRect().top,
+          mapTop = map.getBoundingClientRect().top,
+          l = place.getBoundingClientRect(),
+          lTop = l.top - mapTop, lBottom = l.bottom - mapTop,   // in map coords
+          first = Infinity;
+      [hero.querySelector("h1"), sub].forEach(function (el) {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        Array.prototype.forEach.call(range.getClientRects(), function (r) {
+          if (r.width === 0 || r.right <= l.left || r.left >= l.right) return;
+          var tTop = r.top - heroTop, tBottom = r.bottom - heroTop;
+          // Map offset s (0..hold) at which the label first touches this line.
+          var s = Math.max(0, tTop - lBottom);
+          if (s <= hold && lTop + s < tBottom) first = Math.min(first, s);
+        });
+      });
+      return first;
+    }
+    function checkFade() {
+      if (place) place.classList.toggle("occluded", window.scrollY >= fadeAt - 16);
+    }
+    addEventListener("scroll", checkFade, { passive: true });
     addEventListener("resize", measure);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
     measure();
