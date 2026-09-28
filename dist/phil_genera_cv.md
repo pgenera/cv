@@ -1,6 +1,6 @@
 # Phil Genera
 
-Infrastructure & Site Reliability Engineering
+Infrastructure & Site Reliability Engineer
 
 - Location: Beverly, MA
 - Email: <pg@fivesevenfive.org>
