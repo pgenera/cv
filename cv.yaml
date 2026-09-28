@@ -48,16 +48,17 @@ experience:
         end: Present
         bullets:
           - >-
-            Manage the team responsible for footprint operations (turn up, turn down,
-            resize, move) across Google's CD infrastructure, which actuates the majority
-            of the datacenter footprint.
+            Manage the team of 10 responsible for footprint operations (turn up, turn
+            down, resize, move) across Google's CD infrastructure, which actuates the
+            majority of the datacenter footprint.
           - >-
-            Own the reliability and safety of those actions. With the goal that capacity
-            changes cannot take down the services that depend on them, and that unsafe
-            cases fail closed rather than proceeding. Defined and drove progress on
-            customer-centric SLIs, SLOs, and SLAs. 79% lower failure rate in 2 years.
+            Improved the reliability (by 79% fewer failures) and safety of those
+            actions. With the goal that capacity changes cannot take down the services
+            that depend on them, and that unsafe cases fail closed rather than
+            proceeding. Negotiated, defined and drove progress on customer-centric SLIs,
+            SLOs, and SLAs.
           - >-
-            Moved footprint changes from operator-driven execution toward automated,
+            Moved footprint changes from operator-driven execution to automated,
             continuous actuation, so that the scale and speed of a change is bounded by
             policy rather than by operator attention, and is easier, safer, and faster.
           - >-
@@ -82,9 +83,10 @@ experience:
             delivering significantly higher reliability, lower operator toil, and
             resiliency against bad input.
           - >-
-            Took over management of the team in June 2022 while continuing SRE work. The
-            scope covered HIPAA and related compliance, infrastructure cost, project
-            planning, customer relationships, and software engineering productivity.
+            Took over management of the team of 5 in June 2022 while continuing SRE
+            work. The scope covered HIPAA and related compliance, infrastructure cost,
+            project planning, customer relationships, and software engineering
+            productivity.
 
       - title: Senior Software Engineer
         team: Google Cloud Networking
