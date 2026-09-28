@@ -92,4 +92,5 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 ## Additional
 
 - Volunteers at the Boston Marathon as an Amateur Radio Operator at a medical tent, handling medical resupply and sweep bus traffic within the Incident Command System. (2016 – Present)
-- Powerlifting, running, amateur radio (W1JV), and endurance motorcycling. Eagle Scout.
+- Amateur radio (W1JV), atomic clocks, frequency measurement, and antique test equipment.
+- Powerlifting, running, and endurance motorcycling. Renewable energy and heating with wood. Eagle Scout.
