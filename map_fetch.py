@@ -5,7 +5,10 @@ Run rarely, by hand, to refresh the map. Builds only read map_data.json, so
 they stay offline and dependency-free. This script needs shapely:
 
     python3 -m venv /tmp/mapvenv && /tmp/mapvenv/bin/pip install shapely
-    /tmp/mapvenv/bin/python map_fetch.py
+    /tmp/mapvenv/bin/python map_fetch.py osm/cache
+
+Output goes to osm/map_data.json. osm/ is git-ignored: the baked map is a
+derived OSM database, so it is never committed (only the rendered site is).
 
 Map data (c) OpenStreetMap contributors, ODbL. The site credits it.
 """
@@ -26,26 +29,31 @@ from shapely.ops import linemerge, polygonize, unary_union
 
 # Framing: Boston to Beverly. The SVG uses preserveAspectRatio="xMidYMid slice",
 # so phones see the full height and a centered slice of the width.
-W, H = 1440, 460
-LON_CENTER = -70.985
+W = 1440
+# Shifted west of the Boston-Beverly midpoint so downtown clears the headline,
+# which sits over the left side of the hero on desktop.
+LON_CENTER = -71.141
 
 # Area fetched from OSM. Kept fixed so the raw-response cache stays valid while
 # the view below is adjusted; the view must stay inside it.
-_FT, _FB = 42.610, 42.335
-_K = H / (_FT - _FB)
+_FT, _FB, _FH = 42.610, 42.335, 460
+_K = _FH / (_FT - _FB)
 _KX = _K * cos(radians((_FT + _FB) / 2))
 PAD = 0.02
 S, N = _FB - PAD, _FT + PAD
 WEST, EAST = LON_CENTER - (W / 2) / _KX - PAD, LON_CENTER + (W / 2) / _KX + PAD
 BBOX = f"{S},{WEST},{N},{EAST}"
 
-# View: same scale as the fetch, nudged north so Beverly clears the top edge.
-LAT_TOP = 42.625
-LAT_BOTTOM = LAT_TOP - (_FT - _FB)
+# View: same scale as the fetch. Tall enough to show downtown Boston at the
+# bottom while Beverly clears the top edge.
+LAT_TOP, LAT_BOTTOM = 42.615, 42.325
 K, KX = _K, _KX
+H = round((LAT_TOP - LAT_BOTTOM) * K)
 
 # Where the location dot goes: Montserrat commuter rail station, Beverly.
 HOME = (42.5621, -70.8696)
+# Downtown Crossing; phones center their crop between this and HOME.
+DOWNTOWN = (42.3555, -71.0602)
 
 OVERPASS = "https://overpass-api.de/api/interpreter"
 UA = "pgenera-cv-map/1.0 (+https://github.com/pgenera/cv)"
@@ -242,11 +250,14 @@ def main():
     data = {
         "view": {"W": W, "H": H, "LAT_TOP": LAT_TOP, "LAT_BOTTOM": LAT_BOTTOM, "LON_CENTER": LON_CENTER},
         "home": {"name": "Montserrat station, Beverly", "x": round(home[0], 1), "y": round(home[1], 1)},
+        "focus_x": round((home[0] + xy(DOWNTOWN[1], DOWNTOWN[0])[0]) / 2 / W * 100, 1),
         "source": "OpenStreetMap contributors, ODbL",
         "fetched": time.strftime("%Y-%m-%d"),
         "layers": layers,
     }
-    with open("map_data.json", "w") as f:
+    import os
+    os.makedirs("osm", exist_ok=True)
+    with open("osm/map_data.json", "w") as f:
         json.dump(data, f, separators=(",", ":"))
     for k, v in layers.items():
         print(f"  {k:9s} {len(v):>7,d} chars")

@@ -29,7 +29,7 @@ import tempfile
 
 SOURCE = "refs/remotes/git-svn"
 TARGET = "refs/publish/main"
-PRIVATE = ("CLAUDE.md", "private")
+PRIVATE = ("CLAUDE.md", "private", "osm", "map_data.json")
 DENYLIST = "private/publish-denylist.txt"
 REMOTE = "github"
 ALLOWED_URLS = {

@@ -6,7 +6,8 @@ Map data (c) OpenStreetMap contributors, ODbL; credited in the site footer.
 import json
 from pathlib import Path
 
-DATA = json.loads((Path(__file__).parent / "map_data.json").read_text())
+# Git-ignored: a derived OSM database is never committed. Rebuild it with map_fetch.py.
+DATA = json.loads((Path(__file__).parent / "osm" / "map_data.json").read_text())
 
 # Drawing order, bottom to top, and the CSS class for each layer.
 LAYERS = [
@@ -20,6 +21,7 @@ LAYERS = [
 def svg(place_label):
     v, home = DATA["view"], DATA["home"]
     o = [f'<svg class="map" viewBox="0 0 {v["W"]} {v["H"]}" preserveAspectRatio="xMidYMid slice" '
+         f'style="--focus-x: {DATA.get("focus_x", 50)}%; --map-ratio: {v["W"]} / {v["H"]}" '
          'aria-hidden="true" focusable="false">']
     for key, cls in LAYERS:
         d = DATA["layers"].get(key)

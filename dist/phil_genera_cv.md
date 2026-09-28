@@ -10,7 +10,7 @@ Infrastructure & Site Reliability Engineering
 
 ## Summary
 
-Infrastructure engineer with 19 years at Google, roughly fifteen of them as an individual contributor and tech lead across mobile search, media and storage infrastructure, cloud networking, and healthcare systems, and the last four managing small infrastructure teams. Built the first global load balancing for the L7 proxy fronting Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Expert at the layer where capacity, traffic management, and failure domains meet, and still writing and shipping systems code outside of work.
+Infrastructure engineer with 19 years at Google as an expert at the layer where capacity, traffic management, and failure domains meet. 15 years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location, and an additional 4 years managing small infrastructure teams while still writing and shipping systems code. Built the first global load balancing for the L7 proxy fronting Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Still writing and shipping systems code outside of work.
 
 ## Technical
 
@@ -23,15 +23,15 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 #### Software Engineering Manager, Continuous Delivery Infrastructure (Feb 2024 – Present)
 
 - Manage the team responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint.
-- Own the reliability and safety of those actions. The goal is that capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding. Defined and drove progress on customer-centric SLIs, SLOs, and SLAs. 79% lower failure rate in 2 years.
+- Own the reliability and safety of those actions. With the goal that capacity changes cannot take down the services that depend on them, and that unsafe cases fail closed rather than proceeding. Defined and drove progress on customer-centric SLIs, SLOs, and SLAs. 79% lower failure rate in 2 years.
 - Moved footprint changes from operator-driven execution toward automated, continuous actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
 - Responsible for the oncall team in US-East. Training up new members, managing workload with the global team, and training the team on the Incident Command System annually.
 
 #### Staff Site Reliability Engineer, Google for Clinicians (Apr 2021 – Feb 2024)
 
-- SRE lead for Google's short-lived EHR search and longitudinal health-record product Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment and analysis from bedside to serving in minutes.
+- SRE lead for Google's EHR search and longitudinal health-record product Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment and analysis from bedside to serving in minutes.
 - In addition to ETL indexing and search, the import pipeline added AI enrichments to physician notes and test results. Designed, built, and shipped load balancing and traffic management for the enrichment pipeline, delivering significantly higher reliability, lower operator toil, and resiliency against bad input.
-- Took over management of the team in June 2022 while continuing SRE work. Scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships, and software engineering productivity.
+- Took over management of the team in June 2022 while continuing SRE work. The scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships, and software engineering productivity.
 
 #### Senior Software Engineer, Google Cloud Networking (Aug 2017 – Apr 2021)
 
@@ -41,7 +41,7 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 #### Senior Site Reliability Engineer, YouTube & Storage Infrastructure (Nov 2012 – Aug 2017)
 
-- Ran the West Coast side of the SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become Google Cloud Storage.
+- Ran the West Coast SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become Google Cloud Storage.
 - As tech lead for the upload server, led the infrastructure response to the 2013 Snowden disclosures for the upload server and GCS.
 - Shared oncall and operational ownership of YouTube uploads, transcoding, Content ID, and streaming infrastructure.
 - Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, Google Fiber, and YouTube TV.
@@ -57,7 +57,7 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 #### Software Engineer (Jul 2005 – Aug 2007)
 
-- Built monitoring, diagnostics, and modular plugin tooling in Java for enterprise Linux server clusters.
+- Built monitoring, diagnostics, and modular plugin tooling in Java for enterprise Linux telephony server clusters.
 
 ## Personal Projects
 
@@ -90,4 +90,4 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 ## Additional
 
 - Volunteers at the Boston Marathon as an Amateur Radio Operator at a medical tent, handling medical resupply and sweep bus traffic within the event's incident command structure. (10 years)
-- Powerlifting, running, ham radio and endurance motorcycling. Eagle Scout.
+- Powerlifting, running, ham radio, and endurance motorcycling. Eagle Scout.

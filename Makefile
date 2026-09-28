@@ -11,7 +11,7 @@ export FORCE_SOURCE_DATE := 1
 
 all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md check
 
-$(BUILD)/$(NAME).tex $(BUILD)/index.html $(BUILD)/$(NAME).md &: cv.yaml build.py boston_map.py map_data.json templates/cv.tex templates/site.html $(wildcard templates/fonts/*.woff2)
+$(BUILD)/$(NAME).tex $(BUILD)/index.html $(BUILD)/$(NAME).md &: cv.yaml build.py boston_map.py osm/map_data.json templates/cv.tex templates/site.html $(wildcard templates/fonts/*.woff2)
 	python3 build.py cv.yaml $(BUILD)
 
 # Two passes so hyperref's bookmarks settle.

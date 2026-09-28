@@ -128,8 +128,18 @@ p { margin: 0; }
 .wrap { max-width: calc(var(--rail) + var(--gap) + 42rem + 32px); margin: 0 auto; padding: 0 16px; }
 
 /* ---------- hero: the map ---------- */
-.hero { position: relative; height: clamp(300px, 52vh, 460px); background: var(--land); overflow: hidden; }
-.map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero { --hero-h: clamp(300px, 52vh, 485px); position: relative; height: var(--hero-h); background: var(--land); overflow: hidden; overflow: clip; }
+/* The map is sticky inside a track that is taller than the hero by --hold (set
+   once by script: the distance from the dot down to the subtitle). The browser
+   keeps it pinned while the page scrolls over it, on the compositor, then lets
+   it go when the track runs out. The hero clips the track's extra length.
+   overflow: clip (unlike hidden) doesn't break sticky; older browsers fall
+   back to hidden and a static map. */
+.map-track { position: absolute; top: 0; left: 0; right: 0; height: calc(var(--hero-h) + var(--hold, 0px)); contain: layout paint; }
+.map { position: sticky; top: 0; display: block; width: 100%; height: var(--hero-h);
+  /* Own compositor layer: the SVG is rasterized once and slid, not repainted
+     on every scroll frame. */
+  will-change: transform; backface-visibility: hidden; }
 .m-park { fill: var(--park); }
 .m-sea { fill: var(--water); }
 .m-airport { fill: var(--street-edge); }
@@ -263,6 +273,9 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
   .stop > time { padding: 0; }
   .stop > div { grid-column: 1; }
   .fix { --s: 1.45; }
+  /* Phones: size the map to the hero height and center the crop between
+     downtown Boston and Beverly (--focus-x comes from the map data). */
+  .map { width: auto; aspect-ratio: var(--map-ratio); margin-left: 50%; transform: translateX(calc(-1 * var(--focus-x))); }
   /* Beverly sits near the right edge of a phone-width crop: label on the left. */
   .fix .place { text-anchor: end; transform: translateX(-30px); }
   .contact { grid-template-columns: minmax(0, 1fr); row-gap: .6rem; }
@@ -288,7 +301,7 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
 </head>
 <body>
 <header class="hero">
-  {{MAP}}
+  <div class="map-track">{{MAP}}</div>
   <button class="theme" type="button" aria-label="Switch between light and dark">
     <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
@@ -343,6 +356,31 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
   <footer>Updated {{BUILT}}. Download as <a href="{{BASENAME}}.pdf" download>PDF</a> or <a href="{{BASENAME}}.md">Markdown</a>. Map data &copy; <a class="quiet" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.</footer>
 </main>
 <script>
+  // Measure how far the map should hold still: from the location dot down to
+  // the subtitle. Scrolling itself is plain CSS (position: sticky), so this
+  // runs only on load, font load, and resize.
+  (function () {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var hero = document.querySelector(".hero"),
+        map = hero && hero.querySelector(".map"),
+        fix = hero && hero.querySelector(".fix"),
+        anchor = fix && fix.parentNode,
+        sub = hero && hero.querySelector(".headline");
+    if (!map || !anchor || !sub) return;
+    function measure() {
+      // Offsets within the map and hero, so it works mid-scroll too. The dot's
+      // anchor is its translate group's origin; the dot's own box is unreliable
+      // while its landing animation has it scaled down.
+      var dotInMap = anchor.getScreenCTM().f - map.getBoundingClientRect().top,
+          s = sub.getBoundingClientRect(),
+          subInHero = s.top + s.height / 2 - hero.getBoundingClientRect().top;
+      hero.style.setProperty("--hold", Math.max(0, subInHero - dotInMap) + "px");
+    }
+    addEventListener("resize", measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    measure();
+  })();
+
   (function () {
     var root = document.documentElement;
     document.querySelector(".theme").addEventListener("click", function () {
