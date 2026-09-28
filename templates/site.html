@@ -130,7 +130,7 @@ p { margin: 0; }
 /* ---------- hero: the map ---------- */
 .hero { --hero-h: clamp(300px, 52vh, 485px); position: relative; height: var(--hero-h); background: var(--land); overflow: hidden; overflow: clip; }
 /* The map is sticky inside a track that is taller than the hero by --hold (set
-   once by script: the distance from the dot down to the subtitle). The browser
+   once by script: the distance from the dot down to the name). The browser
    keeps it pinned while the page scrolls over it, on the compositor, then lets
    it go when the track runs out. The hero clips the track's extra length.
    overflow: clip (unlike hidden) doesn't break sticky; older browsers fall
@@ -360,7 +360,7 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
 </main>
 <script>
   // Measure how far the map should hold still: from the location dot down to
-  // the subtitle. Scrolling itself is plain CSS (position: sticky), so this
+  // the name. Scrolling itself is plain CSS (position: sticky), so this
   // runs only on load, font load, and resize.
   (function () {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -368,16 +368,17 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
         map = hero && hero.querySelector(".map"),
         fix = hero && hero.querySelector(".fix"),
         anchor = fix && fix.parentNode,
+        title = hero && hero.querySelector("h1"),
         sub = hero && hero.querySelector(".headline");
-    if (!map || !anchor || !sub) return;
+    if (!map || !anchor || !title) return;
     function measure() {
       // Offsets within the map and hero, so it works mid-scroll too. The dot's
       // anchor is its translate group's origin; the dot's own box is unreliable
       // while its landing animation has it scaled down.
       var dotInMap = anchor.getScreenCTM().f - map.getBoundingClientRect().top,
-          s = sub.getBoundingClientRect(),
-          subInHero = s.top + s.height / 2 - hero.getBoundingClientRect().top;
-      var hold = Math.max(0, subInHero - dotInMap);
+          s = title.getBoundingClientRect(),
+          titleInHero = s.top + s.height / 2 - hero.getBoundingClientRect().top;
+      var hold = Math.max(0, titleInHero - dotInMap);
       hero.style.setProperty("--hold", hold + "px");
       fadeAt = occlusionStart(hold);
       checkFade();
@@ -394,7 +395,7 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
           l = place.getBoundingClientRect(),
           lTop = l.top - mapTop, lBottom = l.bottom - mapTop,   // in map coords
           first = Infinity;
-      [hero.querySelector("h1"), sub].forEach(function (el) {
+      [title, sub].filter(Boolean).forEach(function (el) {
         var range = document.createRange();
         range.selectNodeContents(el);
         Array.prototype.forEach.call(range.getClientRects(), function (r) {
