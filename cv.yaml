@@ -196,11 +196,11 @@ personal_projects:
         publication](https://www.tdcommons.org/dpubs_series/5601) of brokerless
         Publish/Subscribe, and adds typing and encryption.
       - >-
-        Linux-routed home network with policy-based routing, roughly one VLAN per
-        resident, and an nftables trust-zone ruleset.
+        Linux-routed home network with policy-based routing, one VLAN per resident, and
+        an nftables trust-zone ruleset.
       - >-
         Run IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8)
-        address space.
+        address space. Hundreds of RPS of time served.
       - >-
         Built my own consoles, monitoring, and alerting for the systems I own, from
         woodstoves to furnaces to solar arrays.

@@ -74,8 +74,8 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 - [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to Home Assistant via bluetooth proxies.
 - [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-panel disciplined NTP refclock.
 - [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements my [defensive publication](https://www.tdcommons.org/dpubs_series/5601) of brokerless Publish/Subscribe, and adds typing and encryption.
-- Linux-routed home network with policy-based routing, roughly one VLAN per resident, and an nftables trust-zone ruleset.
-- Run IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space.
+- Linux-routed home network with policy-based routing, one VLAN per resident, and an nftables trust-zone ruleset.
+- Run IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space. Hundreds of RPS of time served.
 - Built my own consoles, monitoring, and alerting for the systems I own, from woodstoves to furnaces to solar arrays.
 
 ## Patents and Publications
