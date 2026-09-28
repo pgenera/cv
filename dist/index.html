@@ -279,7 +279,7 @@ footer a.quiet:hover { text-decoration-color: currentColor; }
   /* Beverly sits near the right edge of a phone-width crop: label on the left. */
   .fix .place { text-anchor: end; transform: translateX(-30px); }
   .contact { grid-template-columns: minmax(0, 1fr); row-gap: .6rem; }
-  .contact .btn { grid-row: 2; }
+  .contact .btn { display: none; }  /* the footer still links the PDF */
 }
 
 @media print {
