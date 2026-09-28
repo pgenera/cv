@@ -7,7 +7,7 @@ DIST  := dist
 export SOURCE_DATE_EPOCH := $(shell git log -1 --format=%ct -- cv.yaml templates/cv.tex build.py 2>/dev/null)
 export FORCE_SOURCE_DATE := 1
 
-.PHONY: all clean check fmt svn publish publish-push
+.PHONY: all clean check fmt svn publish publish-push identify
 
 all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md check
 
@@ -47,6 +47,10 @@ publish:
 
 publish-push:
 	python3 publish.py --push
+
+# Which commit was this PDF built from?  make identify PDF=path/to/file.pdf
+identify:
+	python3 pdf_source.py $(or $(PDF),$(DIST)/$(NAME).pdf)
 
 clean:
 	rm -rf $(BUILD)

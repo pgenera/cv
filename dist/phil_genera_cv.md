@@ -2,6 +2,8 @@
 
 Infrastructure & Site Reliability Engineer
 
+Latest version: <https://cv.fivesevenfive.org/>. Updated September 2026.
+
 - Location: Beverly, MA
 - Email: <pg@fivesevenfive.org>
 - Phone: +1 (203) 606-4771

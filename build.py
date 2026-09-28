@@ -6,15 +6,29 @@ Writes OUTDIR/phil_genera_cv.tex, OUTDIR/index.html, OUTDIR/phil_genera_cv.md.
 """
 
 import base64
+import hashlib
+import os
 import html
 import re
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import yaml
 
 import boston_map
+
+
+def content_date():
+    """The content date: SOURCE_DATE_EPOCH (set by make from the last commit
+    touching the CV's sources), else today."""
+    epoch = os.environ.get("SOURCE_DATE_EPOCH")
+    return datetime.fromtimestamp(int(epoch), timezone.utc).date() if epoch else date.today()
+
+
+def fingerprint(path):
+    """Short sha256 of the source file, embedded in the PDF metadata."""
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()[:12]
 
 ROOT = Path(__file__).parent
 TEMPLATES = ROOT / "templates"
@@ -154,7 +168,19 @@ def render_tex(cv):
     L.append(r"\end{itemize}")
 
     tpl = (TEMPLATES / "cv.tex").read_text()
-    return tpl.replace("<<NAME>>", tex(cv["name"])).replace("<<BODY>>", "\n".join(L))
+    site = cv["site"]
+    fills = {
+        "<<NAME>>": tex(cv["name"]),
+        "<<SITE>>": site,
+        "<<SITELABEL>>": tex(site.split("://", 1)[-1].rstrip("/")),
+        "<<UPDATED>>": content_date().strftime("%B %Y"),
+        "<<PDFSUBJECT>>": tex(f"CV. Latest version: {site}"),
+        "<<PDFKEYWORDS>>": tex(f"source {site}; cv.yaml sha256:{cv['_fingerprint']}"),
+        "<<BODY>>": "\n".join(L),
+    }
+    for k, v in fills.items():
+        tpl = tpl.replace(k, v)
+    return tpl
 
 
 # ---------- Markdown ----------
@@ -168,7 +194,8 @@ def md_dates(x):
 
 
 def render_md(cv):
-    L = [f"# {cv['name']}", "", cv["headline"], ""]
+    L = [f"# {cv['name']}", "", cv["headline"], "",
+         f"Latest version: <{cv['site']}>. Updated {content_date():%B %Y}.", ""]
     L += [f"- Location: {cv['location']}", f"- Email: <{cv['email']}>"]
     if cv.get("phone"):
         L.append(f"- Phone: {cv['phone']}")
@@ -276,7 +303,8 @@ def render_html(cv):
             f'<li>{h(a["text"])} <time class="when">{h_dates(a)}</time></li>' if isinstance(a, dict)
             else f"<li>{h(a)}</li>" for a in cv["additional"]) + "</ul>",
         "BASENAME": BASENAME,
-        "BUILT": date.today().isoformat(),
+        "BUILT": content_date().isoformat(),
+        "SITE": html.escape(cv["site"]),
     }
     out = (TEMPLATES / "site.html").read_text()
     for k, v in fills.items():
@@ -294,6 +322,7 @@ def tel(phone):
 def main():
     src, outdir = Path(sys.argv[1]), Path(sys.argv[2])
     cv = yaml.safe_load(src.read_text())
+    cv["_fingerprint"] = fingerprint(src)
     outdir.mkdir(parents=True, exist_ok=True)
     (outdir / f"{BASENAME}.tex").write_text(render_tex(cv))
     (outdir / f"{BASENAME}.md").write_text(render_md(cv))
