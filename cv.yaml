@@ -36,7 +36,7 @@ technical: >-
   Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent
   project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP,
   docker, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity.
-  Global and regional load software load balancing.
+  Global and regional software load balancing.
 
 experience:
   - org: Google
@@ -72,7 +72,7 @@ experience:
         end: Feb 2024
         bullets:
           - >-
-            SRE lead for Google's EHR search and longitudinal health-record product
+            SRE lead for Google's EHR search and longitudinal health-record product,
             Google for Clinicians, serving one of the largest hospital systems in the
             United States. Delivering streaming record updates, normalization,
             enrichment and analysis from bedside to serving in minutes.
@@ -98,8 +98,8 @@ experience:
             (CloudPath, sitting between Google Cloud and Google production), a large and
             high-reliability component of the Google Cloud Platform.
           - >-
-            This load balancing project, with others, enabled traffic grown from XX Gbps
-            to XX Tbps, with higher customer reliability, and lower cost.
+            This load balancing project, with others, enabled traffic growth from XX
+            Gbps to XX Tbps, with higher customer reliability, and lower cost.
           - >-
             Landed features across the proxy and software-defined networking data and
             control plane

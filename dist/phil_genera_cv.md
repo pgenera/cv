@@ -16,7 +16,7 @@ Infrastructure engineer with 19 years at Google as an expert at the layer where 
 
 ## Technical
 
-Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP, docker, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity. Global and regional load software load balancing.
+Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP, docker, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity. Global and regional software load balancing.
 
 ## Experience
 
@@ -31,14 +31,14 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 #### Staff Site Reliability Engineer, Google for Clinicians (Apr 2021 – Feb 2024)
 
-- SRE lead for Google's EHR search and longitudinal health-record product Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment and analysis from bedside to serving in minutes.
+- SRE lead for Google's EHR search and longitudinal health-record product, Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment and analysis from bedside to serving in minutes.
 - In addition to ETL indexing and search, the import pipeline added AI enrichments to physician notes and test results. Designed, built, and shipped load balancing and traffic management for the enrichment pipeline, delivering significantly higher reliability, lower operator toil, and resiliency against bad input.
 - Took over management of the team of 5 in June 2022 while continuing SRE work. The scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships, and software engineering productivity.
 
 #### Senior Software Engineer, Google Cloud Networking (Aug 2017 – Apr 2021)
 
 - Built the first global load balancing for Google's internal L7 proxy (CloudPath, sitting between Google Cloud and Google production), a large and high-reliability component of the Google Cloud Platform.
-- This load balancing project, with others, enabled traffic grown from XX Gbps to XX Tbps, with higher customer reliability, and lower cost.
+- This load balancing project, with others, enabled traffic growth from XX Gbps to XX Tbps, with higher customer reliability, and lower cost.
 - Landed features across the proxy and software-defined networking data and control plane ([Orion](https://research.google/pubs/orion-googles-software-defined-networking-control-plane/), NSDI 2021).
 
 #### Senior Site Reliability Engineer, YouTube & Storage Infrastructure (Nov 2012 – Aug 2017)
