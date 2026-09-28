@@ -1,243 +1,31 @@
-"""Stylized metro Boston map for the site hero.
+"""Render the hero map from map_data.json (baked from OpenStreetMap by map_fetch.py).
 
-Approximate (lat, lon) points, projected equirectangularly. Accurate to a few
-hundred meters at best; this is decoration, not a survey.
+Map data (c) OpenStreetMap contributors, ODbL; credited in the site footer.
 """
 
-from math import cos, radians
+import json
+from pathlib import Path
 
-W, H = 1440, 460
-LAT_TOP, LAT_BOTTOM = 42.402, 42.323
-LON_CENTER = -71.086
-K = H / (LAT_TOP - LAT_BOTTOM)          # px per degree of latitude
-KX = K * cos(radians((LAT_TOP + LAT_BOTTOM) / 2))
+DATA = json.loads((Path(__file__).parent / "map_data.json").read_text())
 
-HOME = (42.3625, -71.0862)  # Kendall/MIT on the Red Line
-
-
-def xy(lat, lon):
-    return (W / 2 + (lon - LON_CENTER) * KX, (LAT_TOP - lat) * K)
-
-
-def path(points, close=False):
-    pts = [xy(*p) for p in points]
-    d = "M" + " L".join(f"{x:.1f} {y:.1f}" for x, y in pts)
-    return d + ("Z" if close else "")
-
-
-def smooth(points):
-    """Catmull-Rom through the points, as cubic Beziers."""
-    pts = [xy(*p) for p in points]
-    if len(pts) < 3:
-        return path(points)
-    d = [f"M{pts[0][0]:.1f} {pts[0][1]:.1f}"]
-    for i in range(len(pts) - 1):
-        p0 = pts[i - 1] if i else pts[i]
-        p1, p2 = pts[i], pts[i + 1]
-        p3 = pts[i + 2] if i + 2 < len(pts) else p2
-        c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
-        c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
-        d.append(f"C{c1[0]:.1f} {c1[1]:.1f} {c2[0]:.1f} {c2[1]:.1f} {p2[0]:.1f} {p2[1]:.1f}")
-    return "".join(d)
-
-
-def circle(lat, lon, r_km, cls):
-    x, y = xy(lat, lon)
-    return f'<circle class="{cls}" cx="{x:.1f}" cy="{y:.1f}" r="{r_km * K / 111:.1f}"/>'
-
-
-# ---------- water ----------
-
-HARBOR = [
-    (42.3745, -71.0520), (42.3705, -71.0470), (42.3690, -71.0410), (42.3620, -71.0330),
-    (42.3580, -71.0180), (42.3560, -71.0000), (42.3650, -70.9930), (42.3720, -70.9760),
-    (42.3850, -70.9750), (42.3930, -70.9880), (42.4020, -70.9850), (42.4200, -70.9780),
-    (42.4400, -70.9600), (42.4400, -70.8000), (42.2800, -70.8000), (42.2800, -71.0200),
-    (42.2900, -71.0380), (42.3050, -71.0400), (42.3130, -71.0480), (42.3180, -71.0420),
-    (42.3270, -71.0450), (42.3310, -71.0250), (42.3370, -71.0130), (42.3420, -71.0200),
-    (42.3470, -71.0320), (42.3500, -71.0420), (42.3560, -71.0490), (42.3640, -71.0520),
-    (42.3690, -71.0580), (42.3720, -71.0600),
+# Drawing order, bottom to top, and the CSS class for each layer.
+LAYERS = [
+    ("park", "m-park"), ("airport", "m-airport"), ("water", "m-sea"),
+    ("trunk", "m-trunk"), ("motorway", "m-hwy"),
+    ("cr", "m-line m-cr"), ("t_green", "m-line m-green"), ("t_orange", "m-line m-orange"),
+    ("t_red", "m-line m-red"), ("t_blue", "m-line m-blue"),
 ]
 
-CHARLES_BASIN = [
-    # Cambridge shore, BU Bridge to the dam
-    (42.3545, -71.1105), (42.3570, -71.0930), (42.3625, -71.0770), (42.3690, -71.0710),
-    (42.3702, -71.0640),
-    # Boston shore, back upstream
-    (42.3665, -71.0660), (42.3595, -71.0735), (42.3535, -71.0850), (42.3502, -71.0960),
-    (42.3502, -71.1080), (42.3525, -71.1120),
-]
-
-CHARLES_UPSTREAM = [
-    (42.3530, -71.1110), (42.3560, -71.1165), (42.3620, -71.1170), (42.3680, -71.1205),
-    (42.3702, -71.1255), (42.3665, -71.1350), (42.3635, -71.1480), (42.3628, -71.1650),
-    (42.3640, -71.1840), (42.3655, -71.2000), (42.3690, -71.2200), (42.3725, -71.2360),
-    (42.3650, -71.2450), (42.3530, -71.2480), (42.3400, -71.2560), (42.3300, -71.2530),
-    (42.3150, -71.2300), (42.3050, -71.2200), (42.2950, -71.2250),
-]
-
-MYSTIC = [
-    (42.4180, -71.1330), (42.4100, -71.1150), (42.4020, -71.0980), (42.3950, -71.0850),
-    (42.3890, -71.0720), (42.3850, -71.0590), (42.3780, -71.0500),
-]
-
-PONDS = [  # lat, lon, radius km
-    (42.3860, -71.1500, 0.50),  # Fresh Pond
-    (42.4070, -71.1500, 0.40),  # Spy Pond
-    (42.3160, -71.1200, 0.33),  # Jamaica Pond
-    (42.3370, -71.1590, 0.38),  # Chestnut Hill Reservoir
-]
-
-PARKS = [
-    [(42.3575, -71.0712), (42.3582, -71.0622), (42.3540, -71.0610), (42.3524, -71.0702)],  # Common and Public Garden
-    [(42.3150, -71.0950), (42.3125, -71.0820), (42.2990, -71.0805), (42.2985, -71.0990)],  # Franklin Park
-    [(42.3095, -71.1265), (42.3050, -71.1135), (42.2940, -71.1170), (42.2950, -71.1305)],  # Arnold Arboretum
-    [(42.3745, -71.1475), (42.3742, -71.1365), (42.3680, -71.1385), (42.3688, -71.1480)],  # Mount Auburn
-    [(42.3470, -71.0990), (42.3445, -71.0930), (42.3395, -71.0975), (42.3420, -71.1030)],  # the Fens
-]
-
-
-# ---------- streets ----------
-
-HIGHWAYS = [
-    # I-93
-    [(42.4020, -71.0730), (42.3900, -71.0700), (42.3790, -71.0660), (42.3690, -71.0620),
-     (42.3600, -71.0560), (42.3510, -71.0590), (42.3420, -71.0610), (42.3320, -71.0600),
-     (42.3230, -71.0570)],
-    # Mass Pike to the Ted Williams Tunnel
-    [(42.3600, -71.1600), (42.3570, -71.1400), (42.3530, -71.1200), (42.3490, -71.1000),
-     (42.3470, -71.0850), (42.3462, -71.0700), (42.3470, -71.0590), (42.3485, -71.0500),
-     (42.3525, -71.0350), (42.3620, -71.0220)],
-    # McGrath Highway
-    [(42.3705, -71.0765), (42.3790, -71.0820), (42.3870, -71.0880), (42.4000, -71.0960)],
-]
-
-STREETS = [
-    # Mass Ave, Arlington to Edward Everett Square
-    [(42.4100, -71.1480), (42.3970, -71.1320), (42.3884, -71.1191), (42.3800, -71.1195),
-     (42.3732, -71.1185), (42.3695, -71.1110), (42.3651, -71.1037), (42.3595, -71.0942),
-     (42.3565, -71.0925), (42.3510, -71.0895), (42.3480, -71.0877), (42.3425, -71.0855),
-     (42.3395, -71.0810), (42.3330, -71.0730), (42.3290, -71.0650), (42.3240, -71.0595)],
-    # Memorial Drive
-    [(42.3725, -71.1310), (42.3695, -71.1210), (42.3625, -71.1170), (42.3590, -71.1150),
-     (42.3553, -71.1102), (42.3574, -71.0960), (42.3600, -71.0850), (42.3625, -71.0775)],
-    # Storrow Drive and Soldiers Field Road
-    [(42.3640, -71.1330), (42.3585, -71.1255), (42.3545, -71.1180), (42.3508, -71.1100),
-     (42.3500, -71.1000), (42.3512, -71.0900), (42.3548, -71.0800), (42.3603, -71.0722)],
-    # Broadway, Cambridge
-    [(42.3627, -71.0858), (42.3660, -71.0960), (42.3700, -71.1060), (42.3732, -71.1140)],
-    # Main Street and the Longfellow Bridge to Cambridge Street, Boston
-    [(42.3651, -71.1037), (42.3625, -71.0862), (42.3620, -71.0775), (42.3610, -71.0705),
-     (42.3606, -71.0640)],
-    # Cambridge Street, Cambridge
-    [(42.3740, -71.1120), (42.3730, -71.1000), (42.3700, -71.0850), (42.3705, -71.0770)],
-    # Commonwealth Avenue
-    [(42.3533, -71.0712), (42.3490, -71.0880), (42.3490, -71.0950), (42.3500, -71.1050),
-     (42.3510, -71.1250), (42.3450, -71.1400), (42.3380, -71.1530)],
-    # Beacon Street
-    [(42.3580, -71.0640), (42.3560, -71.0712), (42.3505, -71.0890), (42.3485, -71.0955),
-     (42.3440, -71.1100), (42.3380, -71.1400)],
-    # Boylston Street
-    [(42.3530, -71.0640), (42.3520, -71.0703), (42.3490, -71.0780), (42.3475, -71.0870),
-     (42.3450, -71.0950)],
-    # Huntington Avenue
-    [(42.3490, -71.0780), (42.3430, -71.0860), (42.3380, -71.0950), (42.3340, -71.1040)],
-    # Washington Street
-    [(42.3570, -71.0590), (42.3490, -71.0640), (42.3420, -71.0710), (42.3290, -71.0840)],
-    # BU Bridge
-    [(42.3553, -71.1102), (42.3500, -71.1085)],
-]
-
-# Street grids: four corners (clockwise from the northwest) and line counts
-GRIDS = [
-    # Back Bay: Beacon to Boylston, Arlington to Hereford
-    ((42.3560, -71.0716), (42.3512, -71.0872), (42.3478, -71.0862), (42.3520, -71.0703), 5, 8),
-    # South Boston: West First to East Eighth, Dorchester Ave to L Street
-    ((42.3440, -71.0560), (42.3372, -71.0290), (42.3312, -71.0300), (42.3362, -71.0575), 6, 10),
-]
-
-FORT_POINT = [(42.3560, -71.0505), (42.3500, -71.0555), (42.3440, -71.0590), (42.3400, -71.0610)]
-
-
-def lerp(a, b, t):
-    return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
-
-
-def grid(nw, ne, se, sw, rows, cols):
-    lines = []
-    for i in range(rows):
-        t = i / (rows - 1)
-        lines.append([lerp(nw, sw, t), lerp(ne, se, t)])
-    for j in range(cols):
-        t = j / (cols - 1)
-        lines.append([lerp(nw, ne, t), lerp(sw, se, t)])
-    return lines
-
-# ---------- transit ----------
-
-RED = [
-    (42.3954, -71.1425), (42.3967, -71.1218), (42.3884, -71.1191), (42.3734, -71.1190),
-    (42.3651, -71.1037), (42.3625, -71.0862), (42.3612, -71.0706), (42.3564, -71.0624),
-    (42.3555, -71.0602), (42.3522, -71.0552), (42.3426, -71.0569), (42.3302, -71.0570),
-    (42.3207, -71.0524),
-]
-RED_ASHMONT = [(42.3207, -71.0524), (42.3113, -71.0533), (42.3000, -71.0617),
-               (42.2931, -71.0657), (42.2845, -71.0640)]
-RED_BRAINTREE = [(42.3207, -71.0524), (42.3000, -71.0420), (42.2753, -71.0297)]
-
-ORANGE = [
-    (42.4367, -71.0711), (42.4266, -71.0741), (42.4024, -71.0770), (42.3925, -71.0772),
-    (42.3840, -71.0770), (42.3736, -71.0695), (42.3656, -71.0613), (42.3630, -71.0583),
-    (42.3589, -71.0576), (42.3555, -71.0602), (42.3524, -71.0625), (42.3497, -71.0639),
-    (42.3473, -71.0757), (42.3415, -71.0834), (42.3364, -71.0890), (42.3314, -71.0955),
-    (42.3231, -71.0996), (42.3171, -71.1043), (42.3105, -71.1074), (42.3005, -71.1137),
-]
-
-BLUE = [
-    (42.4135, -70.9916), (42.4078, -70.9925), (42.3975, -70.9923), (42.3905, -70.9971),
-    (42.3869, -71.0047), (42.3796, -71.0229), (42.3743, -71.0303), (42.3691, -71.0395),
-    (42.3598, -71.0517), (42.3589, -71.0576), (42.3597, -71.0592), (42.3614, -71.0620),
-]
-
-GREEN_TRUNK = [
-    (42.4075, -71.1170), (42.3997, -71.1110), (42.3935, -71.1063), (42.3878, -71.0963),
-    (42.3794, -71.0867), (42.3710, -71.0766), (42.3666, -71.0676), (42.3656, -71.0613),
-    (42.3630, -71.0583), (42.3597, -71.0592), (42.3564, -71.0624), (42.3530, -71.0647),
-    (42.3519, -71.0707), (42.3500, -71.0774), (42.3480, -71.0875), (42.3489, -71.0952),
-]
-GREEN_UNION = [(42.3794, -71.0867), (42.3775, -71.0940)]
-GREEN_B = [(42.3489, -71.0952), (42.3496, -71.1040), (42.3505, -71.1130),
-           (42.3510, -71.1250), (42.3450, -71.1400), (42.3383, -71.1531), (42.3401, -71.1668)]
-GREEN_C = [(42.3489, -71.0952), (42.3456, -71.1072), (42.3421, -71.1210), (42.3362, -71.1491)]
-GREEN_D = [(42.3489, -71.0952), (42.3452, -71.1043), (42.3412, -71.1101), (42.3327, -71.1168),
-           (42.3290, -71.1350), (42.3350, -71.1488), (42.3320, -71.1700), (42.3300, -71.2000),
-           (42.3370, -71.2300), (42.3380, -71.2530)]
-GREEN_E = [(42.3500, -71.0774), (42.3456, -71.0819), (42.3425, -71.0852), (42.3401, -71.0889),
-           (42.3375, -71.0957), (42.3358, -71.1003), (42.3342, -71.1045), (42.3285, -71.1107)]
 
 def svg(place_label):
-    o = [f'<svg class="map" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid slice" '
-         'role="img" aria-label="Map of metro Boston with a location dot on Cambridge">']
-    o += [f'<path class="m-park" d="{path(p, close=True)}"/>' for p in PARKS]
-    o.append(f'<path class="m-sea" d="{smooth(HARBOR)}Z"/>')
-    o.append(f'<path class="m-sea" d="{path(CHARLES_BASIN, close=True)}"/>')
-    o.append(f'<path class="m-river" stroke-width="{0.14 * K / 111:.1f}" d="{smooth(CHARLES_UPSTREAM)}"/>')
-    o.append(f'<path class="m-river" stroke-width="{0.30 * K / 111:.1f}" d="{smooth(MYSTIC)}"/>')
-    o += [circle(lat, lon, r, "m-sea") for lat, lon, r in PONDS]
-    o.append(f'<path class="m-river" stroke-width="{0.08 * K / 111:.1f}" d="{smooth(FORT_POINT)}"/>')
-    minor = [line for g in GRIDS for line in grid(*g)]
-    o.append(f'<path class="m-minor" d="{"".join(path(l) for l in minor)}"/>')
-    o.append(f'<path class="m-street-edge" d="{"".join(smooth(l) for l in STREETS)}"/>')
-    o.append(f'<path class="m-street" d="{"".join(smooth(l) for l in STREETS)}"/>')
-    o.append(f'<path class="m-hwy-edge" d="{"".join(smooth(l) for l in HIGHWAYS)}"/>')
-    o.append(f'<path class="m-hwy" d="{"".join(smooth(l) for l in HIGHWAYS)}"/>')
-    for cls, lines in (("m-green", (GREEN_TRUNK, GREEN_UNION, GREEN_B, GREEN_C, GREEN_D, GREEN_E)),
-                       ("m-orange", (ORANGE,)),
-                       ("m-red", (RED, RED_ASHMONT, RED_BRAINTREE)),
-                       ("m-blue", (BLUE,))):
-        o += [f'<path class="m-line {cls}" d="{smooth(line)}"/>' for line in lines]
-    hx, hy = xy(*HOME)
-    o.append(f'<g transform="translate({hx:.1f} {hy:.1f})"><g class="fix">'
+    v, home = DATA["view"], DATA["home"]
+    o = [f'<svg class="map" viewBox="0 0 {v["W"]} {v["H"]}" preserveAspectRatio="xMidYMid slice" '
+         'aria-hidden="true" focusable="false">']
+    for key, cls in LAYERS:
+        d = DATA["layers"].get(key)
+        if d:
+            o.append(f'<path class="{cls}" fill-rule="evenodd" d="{d}"/>')
+    o.append(f'<g transform="translate({home["x"]} {home["y"]})"><g class="fix">'
              '<circle class="acc" r="26"/><circle class="dot" r="7.5"/>'
              f'<text class="place" x="15" y="5">{place_label}</text></g></g>')
     o.append("</svg>")

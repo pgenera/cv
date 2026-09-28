@@ -14,3 +14,10 @@ build/
 \#*\#
 .*.swp
 .#*
+
+# Python
+__pycache__/
+
+# OpenStreetMap data (raw cache and the baked map). Derived ODbL database: never commit.
+osm/
+map_data.json

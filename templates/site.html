@@ -58,6 +58,7 @@
   --t-orange: #eeb36e;
   --t-green: #7fb58f;
   --t-blue: #8a9fcc;
+  --t-cr: #b99ab5;
   --rail: 10rem;
   --gap: 2.5rem;
 }
@@ -83,6 +84,8 @@
     --t-orange: #9c7240;
     --t-green: #4c7a5a;
     --t-blue: #4f628c;
+  --t-cr: #6b5470;
+    --t-cr: #6b5470;
   }
 }
 :root[data-theme="dark"] {
@@ -104,6 +107,7 @@
   --t-orange: #9c7240;
   --t-green: #4c7a5a;
   --t-blue: #4f628c;
+  --t-cr: #6b5470;
 }
 
 * { box-sizing: border-box; }
@@ -128,13 +132,11 @@ p { margin: 0; }
 .map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .m-park { fill: var(--park); }
 .m-sea { fill: var(--water); }
-.m-river { fill: none; stroke: var(--water); stroke-linecap: round; stroke-linejoin: round; }
-.m-minor { fill: none; stroke: var(--street); stroke-width: 1.6; stroke-linecap: round; opacity: .75; }
-.m-street-edge { fill: none; stroke: var(--street-edge); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
-.m-street { fill: none; stroke: var(--street); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.m-hwy-edge { fill: none; stroke: var(--street-edge); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
-.m-hwy { fill: none; stroke: var(--hwy); stroke-width: 6.5; stroke-linecap: round; stroke-linejoin: round; }
-.m-line { fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.m-airport { fill: var(--street-edge); }
+.m-trunk { fill: none; stroke: var(--street); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.m-hwy { fill: none; stroke: var(--hwy); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.m-line { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.m-cr { stroke: var(--t-cr); stroke-width: 2; }
 .m-red { stroke: var(--t-red); }
 .m-orange { stroke: var(--t-orange); }
 .m-green { stroke: var(--t-green); }
@@ -244,6 +246,8 @@ li::marker { color: var(--muted); }
 .edu time { color: var(--muted); font-size: .875rem; margin-left: .45rem; }
 
 footer { margin-top: 3.5rem; padding-top: 1.25rem; padding-bottom: 2.5rem; color: var(--muted); font-size: .875rem; }
+footer a.quiet { text-decoration-color: transparent; }
+footer a.quiet:hover { text-decoration-color: currentColor; }
 
 /* ---------- narrow screens: the rail folds above the content ---------- */
 @media (max-width: 760px) {
@@ -259,6 +263,8 @@ footer { margin-top: 3.5rem; padding-top: 1.25rem; padding-bottom: 2.5rem; color
   .stop > time { padding: 0; }
   .stop > div { grid-column: 1; }
   .fix { --s: 1.45; }
+  /* Beverly sits near the right edge of a phone-width crop: label on the left. */
+  .fix .place { text-anchor: end; transform: translateX(-30px); }
   .contact { grid-template-columns: minmax(0, 1fr); row-gap: .6rem; }
   .contact .btn { grid-row: 2; }
 }
@@ -334,7 +340,7 @@ footer { margin-top: 3.5rem; padding-top: 1.25rem; padding-bottom: 2.5rem; color
     <div>{{ADDITIONAL}}</div>
   </section>
 
-  <footer>Updated {{BUILT}}. Download as <a href="{{BASENAME}}.pdf" download>PDF</a> or <a href="{{BASENAME}}.md">Markdown</a>.</footer>
+  <footer>Updated {{BUILT}}. Download as <a href="{{BASENAME}}.pdf" download>PDF</a> or <a href="{{BASENAME}}.md">Markdown</a>. Map data &copy; <a class="quiet" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.</footer>
 </main>
 <script>
   (function () {
