@@ -16,7 +16,7 @@ Infrastructure engineer with 19 years at Google as an expert at the layer where 
 
 ## Technical
 
-Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP, Docker, SnapRAID, tcpdump. Reverse engineering Bluetooth devices. Agentic development with Claude Code and Antigravity. Global and regional software load balancing.
+Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP, docker, snapraid, tcpdump. Reverse engineering Bluetooth devices. Agentic development with Claude Code and Antigravity. Global and regional software load balancing.
 
 ## Experience
 
