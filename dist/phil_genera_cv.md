@@ -16,7 +16,7 @@ Infrastructure engineer with 19 years at Google as an expert at the layer where 
 
 ## Technical
 
-Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP, docker, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity. Global and regional software load balancing.
+Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP, Docker, SnapRAID, tcpdump. Reverse engineering Bluetooth devices. Agentic development with Claude Code and Antigravity. Global and regional software load balancing.
 
 ## Experience
 
@@ -93,4 +93,4 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 - Volunteers at the Boston Marathon as an Amateur Radio Operator at a medical tent, handling medical resupply and sweep bus traffic within the Incident Command System. (2016 – Present)
 - Amateur radio (W1JV), atomic clocks, frequency measurement, and antique test equipment.
-- Powerlifting, running, and endurance motorcycling. Renewable energy and heating with wood. Eagle Scout.
+- Powerlifting, running, and endurance motorcycling. Home automation and heating with wood. Eagle Scout.

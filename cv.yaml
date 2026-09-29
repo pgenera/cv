@@ -35,8 +35,8 @@ summary: >-
 technical: >-
   Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent
   project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP,
-  docker, btrfs, tcpdump, netcat. Agentic development with Claude Code and Antigravity.
-  Global and regional software load balancing.
+  Docker, SnapRAID, tcpdump. Reverse engineering Bluetooth devices. Agentic development
+  with Claude Code and Antigravity. Global and regional software load balancing.
 
 experience:
   - org: Google
@@ -226,5 +226,5 @@ additional:
     Amateur radio (W1JV), atomic clocks, frequency measurement, and antique test
     equipment.
   - >-
-    Powerlifting, running, and endurance motorcycling. Renewable energy and heating with
+    Powerlifting, running, and endurance motorcycling. Home automation and heating with
     wood. Eagle Scout.
