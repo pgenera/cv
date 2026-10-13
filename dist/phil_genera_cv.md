@@ -26,7 +26,7 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 - Manage the team of 10 responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint and is on the critical path for Cloud expansion, AI capacity delivery, and efficiency.
 - Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined, and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is likely.
-- The team sits at the interface between automated capacity planning and actuation. Moving footprint changes from operator-driven execution to automated, continuous actuation.
+- The team sits at the interface between automated capacity planning and actuation, and is moving footprint changes from operator-driven execution to automated, continuous actuation.
 - Built agentic workflows for the team: automated bug filing, hands-off ticket fixes and code reviews, and automated root-cause analysis.
 - Responsible for the oncall team in US-East. Onboarding new members, managing workload with the global team, and training the team on the Incident Command System annually; also a Boston Marathon ICS volunteer.
 
@@ -54,7 +54,7 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 - Ran the West Coast SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become Google Cloud Storage.
 - As tech lead for the upload server, led the upload server and GCS infrastructure response to the 2013 Snowden disclosures.
-- Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, Google Fiber, and YouTube TV.
+- Led the Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, Google Fiber, and YouTube TV.
 
 #### Software Engineer, Mobile Search (Aug 2007 – Nov 2012)
 
@@ -80,7 +80,7 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 ### Home automation and network toys (ongoing)
 
 - [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to Home Assistant via Bluetooth proxies.
-- [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-panel disciplined NTP refclock.
+- [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-disciplined NTP refclock.
 - [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements the brokerless Publish/Subscribe from the [defensive publication](https://www.tdcommons.org/dpubs_series/5601), and adds typing and encryption.
 - IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space. Hundreds of RPS of time served.
 - Consoles, monitoring, and alerting for everything at home, from woodstoves to furnaces to solar arrays.
@@ -96,6 +96,6 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 ## Additional
 
-- Amateur radio operator at a Boston Marathon medical tent, handling medical resupply and sweep bus traffic within the Incident Command System. (2016 – Present)
+- Amateur Radio Operator at a Boston Marathon medical tent, handling medical resupply and sweep bus traffic within the Incident Command System. (2016 – Present)
 - Amateur radio (W1JV), atomic clocks, frequency measurement, and antique test equipment.
 - Powerlifting, running, and endurance motorcycling. Home automation and heating with wood. Eagle Scout.

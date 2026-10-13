@@ -61,7 +61,7 @@ experience:
             changes, which halts rollouts if overload is likely.
           - >-
             The team sits at the interface between automated capacity planning and
-            actuation. Moving footprint changes from operator-driven execution to
+            actuation, and is moving footprint changes from operator-driven execution to
             automated, continuous actuation.
           - >-
             Built agentic workflows for the team: automated bug filing, hands-off ticket
@@ -144,9 +144,9 @@ experience:
             As tech lead for the upload server, led the upload server and GCS
             infrastructure response to the 2013 Snowden disclosures.
           - >-
-            Production Readiness Review and SRE onboarding of YouTube Live Streaming
-            infrastructure, which is shared between YouTube, Google Fiber, and YouTube
-            TV.
+            Led the Production Readiness Review and SRE onboarding of YouTube Live
+            Streaming infrastructure, which is shared between YouTube, Google Fiber, and
+            YouTube TV.
 
       - title: Software Engineer
         team: Mobile Search
@@ -208,8 +208,8 @@ personal_projects:
         [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to
         Home Assistant via Bluetooth proxies.
       - >-
-        [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-panel
-        disciplined NTP refclock.
+        [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-disciplined NTP
+        refclock.
       - >-
         [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements the brokerless
         Publish/Subscribe from the [defensive
@@ -234,7 +234,7 @@ education:
 
 additional:
   - text: >-
-      Amateur radio operator at a Boston Marathon medical tent, handling medical
+      Amateur Radio Operator at a Boston Marathon medical tent, handling medical
       resupply and sweep bus traffic within the Incident Command System.
     start: "2016"
     end: Present
