@@ -125,6 +125,13 @@ experience:
           - >-
             Moved to Cambridge, MA as tech lead for Social SRE, which ran the Gmail
             contacts database along with other graph indexing and storage services.
+          - >-
+            When the team split into storage and graph halves, led the graph side:
+            storage for all implicit and explicit social graph data, the Zanzibar
+            authorization system ([USENIX ATC
+            2019](https://www.usenix.org/conference/atc19/presentation/pang)), and a
+            service that ranked people by graph distance for features like Gmail address
+            autocomplete.
 
       - title: Senior Site Reliability Engineer
         team: YouTube & Storage Infrastructure
@@ -137,9 +144,6 @@ experience:
           - >-
             As tech lead for the upload server, led the infrastructure response to the
             2013 Snowden disclosures for the upload server and GCS.
-          - >-
-            Shared oncall and operational ownership of YouTube uploads, transcoding,
-            Content ID, and streaming infrastructure.
           - >-
             Production Readiness Review and SRE onboarding of YouTube Live Streaming
             infrastructure, which is shared between YouTube, Google Fiber, and YouTube

@@ -30,7 +30,12 @@
 \titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule\vspace{-2pt}]
 \titlespacing{\section}{0pt}{0.7em}{0.35em}
 
-\setlist[itemize]{leftmargin=1.15em, itemsep=1pt, topsep=1pt, parsep=0pt}
+% beginpenalty: never break between a role header and its first bullet (LaTeX's
+% default slightly encourages a break there). Club/widow: no single lines
+% stranded at a page break.
+\setlist[itemize]{leftmargin=1.15em, itemsep=1pt, topsep=1pt, parsep=0pt, beginpenalty=10000}
+\clubpenalty=10000
+\widowpenalty=10000
 
 \newcommand{\role}[2]{%
   \noindent\begin{tabular*}{\linewidth}{@{}p{0.79\linewidth}@{\extracolsep{\fill}}r@{}}
