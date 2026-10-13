@@ -30,7 +30,9 @@ summary: >-
   shipping systems code, internally and externally. Built global load balancing for the
   L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the
   reliability and safety of footprint operations across Google's internal
-  continuous-delivery infrastructure.
+  continuous-delivery infrastructure. Has carried the pager for Google Search, YouTube,
+  and Google Cloud Storage, and now trains an oncall team in the Incident Command
+  System.
 
 technical: >-
   Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent
