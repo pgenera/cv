@@ -12,7 +12,7 @@ Latest version: <https://cv.fivesevenfive.org/>. Updated October 2026.
 
 ## Summary
 
-Infrastructure engineer with 19 years at Google as an expert at the layer where capacity, traffic management, and failure domains meet. 15 years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location, and an additional 4 years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and Google Cloud Storage; now training an oncall team in the Incident Command System.
+Infrastructure engineer with 19 years at Google. An expert at the layer where capacity, traffic management, and failure domains meet. 15 years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location, and an additional 4 years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and Google Cloud Storage; now training an oncall team in the Incident Command System.
 
 ## Technical
 
