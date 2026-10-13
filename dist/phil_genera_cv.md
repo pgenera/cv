@@ -2,7 +2,7 @@
 
 Infrastructure & Site Reliability Engineer
 
-Latest version: <https://cv.fivesevenfive.org/>. Updated September 2026.
+Latest version: <https://cv.fivesevenfive.org/>. Updated October 2026.
 
 - Location: Beverly, MA
 - Email: <pg@fivesevenfive.org>
@@ -29,11 +29,14 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 - Moved footprint changes from operator-driven execution to automated, continuous actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
 - Responsible for the oncall team in US-East. Training up new members, managing workload with the global team, and training the team on the Incident Command System annually.
 
-#### Staff Site Reliability Engineer, Google for Clinicians (May 2021 – Feb 2024)
+#### Site Reliability Engineering Manager, Google for Clinicians (Jun 2022 – Feb 2024)
+
+- Took over management of the team of 5 while continuing SRE work. The scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships, and software engineering productivity.
+
+#### Senior Site Reliability Engineer, Google for Clinicians (May 2021 – Jun 2022)
 
 - SRE lead for Google's EHR search and longitudinal health-record product, Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment and analysis from bedside to serving in minutes.
 - In addition to ETL indexing and search, the import pipeline added AI enrichments to physician notes and test results. Designed, built, and shipped load balancing and traffic management for the enrichment pipeline, delivering significantly higher reliability, lower operator toil, and resiliency against bad input.
-- Took over management of the team of 5 in June 2022 while continuing SRE work. The scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships, and software engineering productivity.
 
 #### Senior Software Engineer, Google Cloud Networking (Aug 2017 – May 2021)
 

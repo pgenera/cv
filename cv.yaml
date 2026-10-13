@@ -66,10 +66,20 @@ experience:
             managing workload with the global team, and training the team on the
             Incident Command System annually.
 
-      - title: Staff Site Reliability Engineer
+      - title: Site Reliability Engineering Manager
+        team: Google for Clinicians
+        start: Jun 2022
+        end: Feb 2024
+        bullets:
+          - >-
+            Took over management of the team of 5 while continuing SRE work. The scope
+            covered HIPAA and related compliance, infrastructure cost, project planning,
+            customer relationships, and software engineering productivity.
+
+      - title: Senior Site Reliability Engineer
         team: Google for Clinicians
         start: May 2021
-        end: Feb 2024
+        end: Jun 2022
         bullets:
           - >-
             SRE lead for Google's EHR search and longitudinal health-record product,
@@ -82,11 +92,6 @@ experience:
             shipped load balancing and traffic management for the enrichment pipeline,
             delivering significantly higher reliability, lower operator toil, and
             resiliency against bad input.
-          - >-
-            Took over management of the team of 5 in June 2022 while continuing SRE
-            work. The scope covered HIPAA and related compliance, infrastructure cost,
-            project planning, customer relationships, and software engineering
-            productivity.
 
       - title: Senior Software Engineer
         team: Google Cloud Networking
