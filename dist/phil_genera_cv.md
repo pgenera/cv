@@ -12,7 +12,7 @@ Latest version: <https://cv.fivesevenfive.org/>. Updated October 2026.
 
 ## Summary
 
-Infrastructure engineer with 19 years at Google as an expert at the layer where capacity, traffic management, and failure domains meet. 15 years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location, and an additional 4 years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Has carried the pager for Google Search, YouTube, and Google Cloud Storage, and now trains an oncall team in the Incident Command System.
+Infrastructure engineer with 19 years at Google as an expert at the layer where capacity, traffic management, and failure domains meet. 15 years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location, and an additional 4 years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and Google Cloud Storage; now training an oncall team in the Incident Command System.
 
 ## Technical
 
@@ -28,7 +28,7 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 - Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is likely.
 - The team sits at the interface between automated capacity planning and actuation. Moving footprint changes from operator-driven execution to automated, continuous actuation.
 - Built agentic workflows for the team: automated bug filing, hands-off ticket fixes and code reviews, and automated root-cause analysis.
-- Responsible for the oncall team in US-East. Training up new members, managing workload with the global team, and training the team on the Incident Command System annually.
+- Responsible for the oncall team in US-East. Training up new members, managing workload with the global team, and training the team on the Incident Command System annually; also a Boston Marathon ICS volunteer.
 
 #### Site Reliability Engineering Manager, Google for Clinicians (Jun 2022 – Feb 2024)
 
@@ -96,6 +96,6 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 ## Additional
 
-- Volunteers at the Boston Marathon as an Amateur Radio Operator at a medical tent, handling medical resupply and sweep bus traffic within the Incident Command System. (2016 – Present)
+- Amateur Radio Operator at a Boston Marathon medical tent, handling medical resupply and sweep bus traffic within the Incident Command System. (2016 – Present)
 - Amateur radio (W1JV), atomic clocks, frequency measurement, and antique test equipment.
 - Powerlifting, running, and endurance motorcycling. Home automation and heating with wood. Eagle Scout.

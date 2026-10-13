@@ -30,9 +30,8 @@ summary: >-
   shipping systems code, internally and externally. Built global load balancing for the
   L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the
   reliability and safety of footprint operations across Google's internal
-  continuous-delivery infrastructure. Has carried the pager for Google Search, YouTube,
-  and Google Cloud Storage, and now trains an oncall team in the Incident Command
-  System.
+  continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and
+  Google Cloud Storage; now training an oncall team in the Incident Command System.
 
 technical: >-
   Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent work
@@ -70,7 +69,7 @@ experience:
           - >-
             Responsible for the oncall team in US-East. Training up new members,
             managing workload with the global team, and training the team on the
-            Incident Command System annually.
+            Incident Command System annually; also a Boston Marathon ICS volunteer.
 
       - title: Site Reliability Engineering Manager
         team: Google for Clinicians
@@ -235,9 +234,8 @@ education:
 
 additional:
   - text: >-
-      Volunteers at the Boston Marathon as an Amateur Radio Operator at a medical tent,
-      handling medical resupply and sweep bus traffic within the Incident Command
-      System.
+      Amateur Radio Operator at a Boston Marathon medical tent, handling medical
+      resupply and sweep bus traffic within the Incident Command System.
     start: "2016"
     end: Present
   - >-
