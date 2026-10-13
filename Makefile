@@ -9,7 +9,7 @@ export FORCE_SOURCE_DATE := 1
 
 .PHONY: all clean check fmt svn publish publish-push identify
 
-all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md check
+all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md $(DIST)/og-image.png check
 
 $(BUILD)/$(NAME).tex $(BUILD)/index.html $(BUILD)/$(NAME).md &: cv.yaml build.py boston_map.py osm/map_data.json templates/cv.tex templates/site.html $(wildcard templates/fonts/*.woff2)
 	python3 build.py cv.yaml $(BUILD)
@@ -21,6 +21,10 @@ $(DIST)/$(NAME).pdf: $(BUILD)/$(NAME).tex
 	  || { tail -30 $(NAME).log; exit 1; }
 	@mkdir -p $(DIST)
 	cp $(BUILD)/$(NAME).pdf $@
+
+# Link-preview card (og:image): the top of page 1.
+$(DIST)/og-image.png: $(DIST)/$(NAME).pdf og_image.py
+	python3 og_image.py $< $@
 
 $(DIST)/index.html: $(BUILD)/index.html
 	@mkdir -p $(DIST)
