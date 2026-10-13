@@ -16,7 +16,7 @@ Infrastructure engineer with 19 years at Google as an expert at the layer where 
 
 ## Technical
 
-Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with recent project work in Kotlin and Go. Linux systems work: nftables, policy routing and BGP, docker, snapraid, tcpdump. Reverse engineering Bluetooth devices. Agentic development with Claude Code and Antigravity. Global and regional software load balancing.
+Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent work in Kotlin and Go. Global and regional software load balancing, Linux networking, tcpdump, and Bluetooth reverse engineering. Agentic development with Claude Code and Antigravity.
 
 ## Experience
 
@@ -59,9 +59,9 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 #### Software Engineer, Mobile Search (Aug 2007 – Nov 2012)
 
 - Invented *Search with My Location*, the blue dot on the mobile search home page, and co-authored the resulting patent with the product manager for the feature.
-- Worked on google.com/m, particularly universal and local search, and curated the local search property for several years.
+- Worked on google.com/m universal and local search, and curated the local search property.
 - Tech lead for mobile search infrastructure work, including launching ads on new mobile properties.
-- 24x7 oncall rotation. Turned up capacity in response to emergencies, handled DoS configuration and response, and led the Production Readiness Review. Trained the SRE team founded to take on this, and other, mobile web services.
+- 24x7 oncall: emergency capacity turnups, DoS response, and the Production Readiness Review. Trained the SRE team founded to take over mobile web services.
 
 ### Cisco Systems (Jul 2005 – Aug 2007)
 
@@ -81,10 +81,9 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 - [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to Home Assistant via bluetooth proxies.
 - [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-panel disciplined NTP refclock.
-- [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements my [defensive publication](https://www.tdcommons.org/dpubs_series/5601) of brokerless Publish/Subscribe, and adds typing and encryption.
-- Linux-routed home network with policy-based routing, one VLAN per resident, and an nftables trust-zone ruleset.
-- Run IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space. Hundreds of RPS of time served.
-- Built my own consoles, monitoring, and alerting for the systems I own, from woodstoves to furnaces to solar arrays.
+- [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements the brokerless Publish/Subscribe from the [defensive publication](https://www.tdcommons.org/dpubs_series/5601), and adds typing and encryption.
+- IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space. Hundreds of RPS of time served.
+- Consoles, monitoring, and alerting for everything at home, from woodstoves to furnaces to solar arrays.
 
 ## Patents and Publications
 
