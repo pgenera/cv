@@ -56,7 +56,7 @@ experience:
             expansion, AI capacity delivery, and efficiency.
           - >-
             Led the team through a 79% reduction in failures of those footprint
-            operations. Negotiated, defined and drove improvements to customer-centric
+            operations. Negotiated, defined, and drove improvements to customer-centric
             SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint
             changes, which halts rollouts if overload is likely.
           - >-
@@ -67,9 +67,9 @@ experience:
             Built agentic workflows for the team: automated bug filing, hands-off ticket
             fixes and code reviews, and automated root-cause analysis.
           - >-
-            Responsible for the oncall team in US-East. Training up new members,
-            managing workload with the global team, and training the team on the
-            Incident Command System annually; also a Boston Marathon ICS volunteer.
+            Responsible for the oncall team in US-East. Onboarding new members, managing
+            workload with the global team, and training the team on the Incident Command
+            System annually; also a Boston Marathon ICS volunteer.
 
       - title: Site Reliability Engineering Manager
         team: Google for Clinicians
@@ -90,7 +90,7 @@ experience:
             SRE lead for Google's EHR search and longitudinal health-record product,
             Google for Clinicians, serving one of the largest hospital systems in the
             United States. Delivering streaming record updates, normalization,
-            enrichment and analysis from bedside to serving in minutes.
+            enrichment, and analysis from bedside to serving in minutes.
           - >-
             In addition to ETL indexing and search, the import pipeline added AI
             enrichments to physician notes and test results. Designed, built, and
@@ -109,10 +109,10 @@ experience:
             high-reliability component of the Google Cloud Platform.
           - >-
             This load balancing project, with others, enabled traffic growth from XX
-            Gbps to XX Tbps, with higher customer reliability, and lower cost.
+            Gbps to XX Tbps, with higher customer reliability and lower cost.
           - >-
             Landed features across the proxy and software-defined networking data and
-            control plane
+            control planes
             ([Orion](https://research.google/pubs/orion-googles-software-defined-networking-control-plane/),
             NSDI 2021).
 
@@ -141,8 +141,8 @@ experience:
             Ran the West Coast SRE team operating YouTube's video transcoding pipeline
             and upload server, which went on to become Google Cloud Storage.
           - >-
-            As tech lead for the upload server, led the infrastructure response to the
-            2013 Snowden disclosures for the upload server and GCS.
+            As tech lead for the upload server, led the upload server and GCS
+            infrastructure response to the 2013 Snowden disclosures.
           - >-
             Production Readiness Review and SRE onboarding of YouTube Live Streaming
             infrastructure, which is shared between YouTube, Google Fiber, and YouTube
@@ -191,7 +191,7 @@ personal_projects:
         entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge
         port, and climate commands.
       - >-
-        Reverse engineered the vehicle's phone-key protocol and documented: the pairing
+        Reverse engineered and documented the vehicle's phone-key protocol: the pairing
         handshake, the authenticated ranging heartbeat that passive entry actually keys
         on rather than OS-level bonding, AES-GCM command framing, and the status stream
         that drives live lock, closure, charge, and range display.
@@ -206,7 +206,7 @@ personal_projects:
     bullets:
       - >-
         [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to
-        Home Assistant via bluetooth proxies.
+        Home Assistant via Bluetooth proxies.
       - >-
         [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-panel
         disciplined NTP refclock.
@@ -234,7 +234,7 @@ education:
 
 additional:
   - text: >-
-      Amateur Radio Operator at a Boston Marathon medical tent, handling medical
+      Amateur radio operator at a Boston Marathon medical tent, handling medical
       resupply and sweep bus traffic within the Incident Command System.
     start: "2016"
     end: Present

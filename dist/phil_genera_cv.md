@@ -25,10 +25,10 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 #### Software Engineering Manager, Continuous Delivery Infrastructure (Feb 2024 – Present)
 
 - Manage the team of 10 responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint and is on the critical path for Cloud expansion, AI capacity delivery, and efficiency.
-- Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is likely.
+- Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined, and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is likely.
 - The team sits at the interface between automated capacity planning and actuation. Moving footprint changes from operator-driven execution to automated, continuous actuation.
 - Built agentic workflows for the team: automated bug filing, hands-off ticket fixes and code reviews, and automated root-cause analysis.
-- Responsible for the oncall team in US-East. Training up new members, managing workload with the global team, and training the team on the Incident Command System annually; also a Boston Marathon ICS volunteer.
+- Responsible for the oncall team in US-East. Onboarding new members, managing workload with the global team, and training the team on the Incident Command System annually; also a Boston Marathon ICS volunteer.
 
 #### Site Reliability Engineering Manager, Google for Clinicians (Jun 2022 – Feb 2024)
 
@@ -36,14 +36,14 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 #### Senior Site Reliability Engineer, Google for Clinicians (May 2021 – Jun 2022)
 
-- SRE lead for Google's EHR search and longitudinal health-record product, Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment and analysis from bedside to serving in minutes.
+- SRE lead for Google's EHR search and longitudinal health-record product, Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment, and analysis from bedside to serving in minutes.
 - In addition to ETL indexing and search, the import pipeline added AI enrichments to physician notes and test results. Designed, built, and shipped load balancing and traffic management for the enrichment pipeline, delivering significantly higher reliability, lower operator toil, and resiliency against bad input.
 
 #### Senior Software Engineer, Google Cloud Networking (Aug 2017 – May 2021)
 
 - Built the first global load balancing for Google's internal L7 proxy (CloudPath, sitting between Google Cloud and Google production), a large and high-reliability component of the Google Cloud Platform.
-- This load balancing project, with others, enabled traffic growth from XX Gbps to XX Tbps, with higher customer reliability, and lower cost.
-- Landed features across the proxy and software-defined networking data and control plane ([Orion](https://research.google/pubs/orion-googles-software-defined-networking-control-plane/), NSDI 2021).
+- This load balancing project, with others, enabled traffic growth from XX Gbps to XX Tbps, with higher customer reliability and lower cost.
+- Landed features across the proxy and software-defined networking data and control planes ([Orion](https://research.google/pubs/orion-googles-software-defined-networking-control-plane/), NSDI 2021).
 
 #### Senior Site Reliability Engineer, Social SRE (May 2014 – Aug 2017)
 
@@ -53,7 +53,7 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 #### Senior Site Reliability Engineer, YouTube & Storage Infrastructure (Nov 2012 – May 2014)
 
 - Ran the West Coast SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become Google Cloud Storage.
-- As tech lead for the upload server, led the infrastructure response to the 2013 Snowden disclosures for the upload server and GCS.
+- As tech lead for the upload server, led the upload server and GCS infrastructure response to the 2013 Snowden disclosures.
 - Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, Google Fiber, and YouTube TV.
 
 #### Software Engineer, Mobile Search (Aug 2007 – Nov 2012)
@@ -74,12 +74,12 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 ### [wearvian](https://github.com/pgenera/wearvian): Wear OS phone key for Rivian R1 vehicles (2026)
 
 - Wear OS app that functions as a Rivian phone key over Bluetooth LE: passive entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge port, and climate commands.
-- Reverse engineered the vehicle's phone-key protocol and documented: the pairing handshake, the authenticated ranging heartbeat that passive entry actually keys on rather than OS-level bonding, AES-GCM command framing, and the status stream that drives live lock, closure, charge, and range display.
+- Reverse engineered and documented the vehicle's phone-key protocol: the pairing handshake, the authenticated ranging heartbeat that passive entry actually keys on rather than OS-level bonding, AES-GCM command framing, and the status stream that drives live lock, closure, charge, and range display.
 - Built for offline operation and key custody. The watch holds no `INTERNET` permission and its private key never leaves the device, with a [companion phone app](https://github.com/pgenera/wearvian-companion) performing the one-time cloud enrollment over the Wear OS Data Layer.
 
 ### Home automation and network toys (ongoing)
 
-- [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to Home Assistant via bluetooth proxies.
+- [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to Home Assistant via Bluetooth proxies.
 - [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-panel disciplined NTP refclock.
 - [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements the brokerless Publish/Subscribe from the [defensive publication](https://www.tdcommons.org/dpubs_series/5601), and adds typing and encryption.
 - IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space. Hundreds of RPS of time served.
@@ -96,6 +96,6 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 ## Additional
 
-- Amateur Radio Operator at a Boston Marathon medical tent, handling medical resupply and sweep bus traffic within the Incident Command System. (2016 – Present)
+- Amateur radio operator at a Boston Marathon medical tent, handling medical resupply and sweep bus traffic within the Incident Command System. (2016 – Present)
 - Amateur radio (W1JV), atomic clocks, frequency measurement, and antique test equipment.
 - Powerlifting, running, and endurance motorcycling. Home automation and heating with wood. Eagle Scout.
