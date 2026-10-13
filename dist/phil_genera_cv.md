@@ -25,8 +25,9 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 #### Software Engineering Manager, Continuous Delivery Infrastructure (Feb 2024 – Present)
 
 - Manage the team of 10 responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint and is on the critical path for Cloud expansion, AI capacity delivery, and efficiency.
-- Reduced failures by 79%, improving the reliability and safety of those footprint operations. Built and deployed capacity supervision for footprint changes, halting rollouts if overload is likely. Negotiated, defined and drove improvements to customer-centric SLIs, SLOs, and SLAs.
-- Moved footprint changes from operator-driven execution to automated, continuous actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
+- Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is likely.
+- The team sits at the interface between automated capacity planning and actuation. Moving footprint changes from operator-driven execution to automated, continuous actuation.
+- Built agentic workflows for the team: automated bug filing, hands-off ticket fixes and code reviews, and automated root-cause analysis.
 - Responsible for the oncall team in US-East. Training up new members, managing workload with the global team, and training the team on the Incident Command System annually.
 
 #### Site Reliability Engineering Manager, Google for Clinicians (Jun 2022 – Feb 2024)
