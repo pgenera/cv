@@ -68,7 +68,7 @@ experience:
 
       - title: Staff Site Reliability Engineer
         team: Google for Clinicians
-        start: Apr 2021
+        start: May 2021
         end: Feb 2024
         bullets:
           - >-
@@ -91,7 +91,7 @@ experience:
       - title: Senior Software Engineer
         team: Google Cloud Networking
         start: Aug 2017
-        end: Apr 2021
+        end: May 2021
         bullets:
           - >-
             Built the first global load balancing for Google's internal L7 proxy
@@ -107,9 +107,18 @@ experience:
             NSDI 2021).
 
       - title: Senior Site Reliability Engineer
+        team: Social SRE
+        start: May 2014
+        end: Aug 2017
+        bullets:
+          - >-
+            Moved to Cambridge, MA as tech lead for Social SRE, which ran the Gmail
+            contacts database along with other graph indexing and storage services.
+
+      - title: Senior Site Reliability Engineer
         team: YouTube & Storage Infrastructure
         start: Nov 2012
-        end: Aug 2017
+        end: May 2014
         bullets:
           - >-
             Ran the West Coast SRE team operating YouTube's video transcoding pipeline
@@ -174,13 +183,10 @@ personal_projects:
         on rather than OS-level bonding, AES-GCM command framing, and the status stream
         that drives live lock, closure, charge, and range display.
       - >-
-        Wrote `core-crypto`, a standalone Kotlin/JVM module implementing secp256r1,
-        ECDH, HKDF-SHA256, HMAC, and AES-GCM command frames, verified against
-        known-answer parity tests.
-      - "Built for offline operation and key custody. The watch holds no `INTERNET` permission and its private key never leaves the device, with a [companion phone app](https://github.com/pgenera/wearvian-companion) performing the one-time cloud enrollment over the Wear OS Data Layer. "
-      - >-
-        Power-saving passive mode releases the wake lock and tears down the radio when
-        idle, with a hardware-offloaded scan rebuilding the link on approach.
+        Built for offline operation and key custody. The watch holds no `INTERNET`
+        permission and its private key never leaves the device, with a [companion phone
+        app](https://github.com/pgenera/wearvian-companion) performing the one-time
+        cloud enrollment over the Wear OS Data Layer.
 
   - name: Home automation and network toys
     dates: ongoing

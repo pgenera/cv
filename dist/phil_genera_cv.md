@@ -29,19 +29,23 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 - Moved footprint changes from operator-driven execution to automated, continuous actuation, so that the scale and speed of a change is bounded by policy rather than by operator attention, and is easier, safer, and faster.
 - Responsible for the oncall team in US-East. Training up new members, managing workload with the global team, and training the team on the Incident Command System annually.
 
-#### Staff Site Reliability Engineer, Google for Clinicians (Apr 2021 – Feb 2024)
+#### Staff Site Reliability Engineer, Google for Clinicians (May 2021 – Feb 2024)
 
 - SRE lead for Google's EHR search and longitudinal health-record product, Google for Clinicians, serving one of the largest hospital systems in the United States. Delivering streaming record updates, normalization, enrichment and analysis from bedside to serving in minutes.
 - In addition to ETL indexing and search, the import pipeline added AI enrichments to physician notes and test results. Designed, built, and shipped load balancing and traffic management for the enrichment pipeline, delivering significantly higher reliability, lower operator toil, and resiliency against bad input.
 - Took over management of the team of 5 in June 2022 while continuing SRE work. The scope covered HIPAA and related compliance, infrastructure cost, project planning, customer relationships, and software engineering productivity.
 
-#### Senior Software Engineer, Google Cloud Networking (Aug 2017 – Apr 2021)
+#### Senior Software Engineer, Google Cloud Networking (Aug 2017 – May 2021)
 
 - Built the first global load balancing for Google's internal L7 proxy (CloudPath, sitting between Google Cloud and Google production), a large and high-reliability component of the Google Cloud Platform.
 - This load balancing project, with others, enabled traffic growth from XX Gbps to XX Tbps, with higher customer reliability, and lower cost.
 - Landed features across the proxy and software-defined networking data and control plane ([Orion](https://research.google/pubs/orion-googles-software-defined-networking-control-plane/), NSDI 2021).
 
-#### Senior Site Reliability Engineer, YouTube & Storage Infrastructure (Nov 2012 – Aug 2017)
+#### Senior Site Reliability Engineer, Social SRE (May 2014 – Aug 2017)
+
+- Moved to Cambridge, MA as tech lead for Social SRE, which ran the Gmail contacts database along with other graph indexing and storage services.
+
+#### Senior Site Reliability Engineer, YouTube & Storage Infrastructure (Nov 2012 – May 2014)
 
 - Ran the West Coast SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become Google Cloud Storage.
 - As tech lead for the upload server, led the infrastructure response to the 2013 Snowden disclosures for the upload server and GCS.
@@ -67,9 +71,7 @@ Java, Python, SQL, and C++, plus a long tail of domain-specific languages, with 
 
 - Wear OS app that functions as a Rivian phone key over Bluetooth LE: passive entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge port, and climate commands.
 - Reverse engineered the vehicle's phone-key protocol and documented: the pairing handshake, the authenticated ranging heartbeat that passive entry actually keys on rather than OS-level bonding, AES-GCM command framing, and the status stream that drives live lock, closure, charge, and range display.
-- Wrote `core-crypto`, a standalone Kotlin/JVM module implementing secp256r1, ECDH, HKDF-SHA256, HMAC, and AES-GCM command frames, verified against known-answer parity tests.
-- Built for offline operation and key custody. The watch holds no `INTERNET` permission and its private key never leaves the device, with a [companion phone app](https://github.com/pgenera/wearvian-companion) performing the one-time cloud enrollment over the Wear OS Data Layer. 
-- Power-saving passive mode releases the wake lock and tears down the radio when idle, with a hardware-offloaded scan rebuilding the link on approach.
+- Built for offline operation and key custody. The watch holds no `INTERNET` permission and its private key never leaves the device, with a [companion phone app](https://github.com/pgenera/wearvian-companion) performing the one-time cloud enrollment over the Wear OS Data Layer.
 
 ### Home automation and network toys (ongoing)
 
