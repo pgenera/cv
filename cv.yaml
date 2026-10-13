@@ -51,7 +51,8 @@ experience:
           - >-
             Manage the team of 10 responsible for footprint operations (turn up, turn
             down, resize, move) across Google's CD infrastructure, which actuates the
-            majority of the datacenter footprint.
+            majority of the datacenter footprint and is on the critical path for Cloud
+            expansion, AI capacity delivery, and efficiency.
           - >-
             Reduced failures by 79%, improving the reliability and safety of those
             footprint operations. Built and deployed capacity supervision for footprint
