@@ -2,9 +2,17 @@ NAME  := phil_genera_cv
 BUILD := build
 DIST  := dist
 
-# Reproducible PDF: stamp it with the last commit touching its sources, not the
-# build time, so it only changes when its content does.
-export SOURCE_DATE_EPOCH := $(shell git log -1 --format=%ct -- cv.yaml templates/cv.tex build.py 2>/dev/null)
+# Reproducible PDF: the date stamp only changes when the content does. The
+# pre-commit hook builds with the current time; later builds reuse the date in
+# dist/'s PDF while its cv.yaml fingerprint still matches, and otherwise fall
+# back to the last commit touching the sources.
+ifndef SOURCE_DATE_EPOCH
+SOURCE_DATE_EPOCH := $(shell f=$(DIST)/$(NAME).pdf; \
+  if [ -f $$f ] && pdfinfo $$f 2>/dev/null | grep -q "sha256:$$(sha256sum cv.yaml | cut -c1-12)"; \
+  then date -d "$$(pdfinfo -isodates $$f | awk '/^CreationDate:/ {print $$2}')" +%s; \
+  else git log -1 --format=%ct -- cv.yaml templates/cv.tex build.py 2>/dev/null; fi)
+endif
+export SOURCE_DATE_EPOCH
 export FORCE_SOURCE_DATE := 1
 
 .PHONY: all clean check fmt hooks svn publish publish-push identify
@@ -41,7 +49,8 @@ check: $(DIST)/$(NAME).pdf
 fmt:
 	python3 fmt_yaml.py cv.yaml
 
-# Use the repo's hooks (githooks/pre-commit formats cv.yaml). Once per clone.
+# Use the repo's hooks (githooks/pre-commit formats cv.yaml and rebuilds dist/).
+# Once per clone.
 hooks:
 	git config core.hooksPath githooks
 
