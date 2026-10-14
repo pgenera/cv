@@ -16,7 +16,7 @@ Infrastructure engineer with nineteen years at Google. An expert at the layer wh
 
 ## Technical
 
-Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent agentic work in Kotlin and Go with Claude Code and Antigravity. Global and regional software load balancing, networking, and Bluetooth reverse engineering.
+Java, Python, C++, SQL, and a long tail of DSLs; recent agentic work in Kotlin and Go with Claude Code and Antigravity. Global and regional software load balancing, networking, and Bluetooth reverse engineering.
 
 ## Experience
 
@@ -27,7 +27,7 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 - Manage the team of ten responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint, and is on the critical path for Cloud region and zone expansion, AI capacity delivery, and efficiency.
 - Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined, and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is predicted.
 - The team sits at the interface between automated capacity planning and actuation, and is moving footprint changes from operator-driven execution to automated, continuous actuation.
-- Built agentic workflows for the team: conversational bug filing, hands-off  fixes and code reviews, and automated root-cause analysis.
+- Built agentic workflows for the team: conversational bug filing, hands-off fixes and code reviews, and root-cause analysis.
 - Responsible for the oncall team in US-East. Onboarding new members, managing workload with the global team, and training the team on the Incident Command System annually; also a Boston Marathon ICS volunteer.
 
 #### Site Reliability Engineering Manager, Google for Clinicians (Jun 2022 – Feb 2024)
@@ -85,9 +85,9 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 ### Embedded systems and network services (ongoing)
 
-- [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements the brokerless Publish/Subscribe from the [defensive publication](https://www.tdcommons.org/dpubs_series/5601), and adds typing and encryption.
+- [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements the brokerless pub/sub from the [defensive publication](https://www.tdcommons.org/dpubs_series/5601), adding typing and encryption.
 - [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to Home Assistant via Bluetooth proxies.
-- IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space. Hundreds of RPS of time served.
+- IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8). Hundreds of RPS of time served.
 - [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-disciplined NTP refclock.
 - Consoles, monitoring, and alerting for everything at home, from woodstoves to furnaces to solar arrays.
 
