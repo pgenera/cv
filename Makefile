@@ -7,7 +7,7 @@ DIST  := dist
 export SOURCE_DATE_EPOCH := $(shell git log -1 --format=%ct -- cv.yaml templates/cv.tex build.py 2>/dev/null)
 export FORCE_SOURCE_DATE := 1
 
-.PHONY: all clean check fmt svn publish publish-push identify
+.PHONY: all clean check fmt hooks svn publish publish-push identify
 
 all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md $(DIST)/og-image.png check
 
@@ -40,6 +40,10 @@ check: $(DIST)/$(NAME).pdf
 
 fmt:
 	python3 fmt_yaml.py cv.yaml
+
+# Use the repo's hooks (githooks/pre-commit formats cv.yaml). Once per clone.
+hooks:
+	git config core.hooksPath githooks
 
 # Full repo, including private/ and CLAUDE.md, goes to SVN.
 svn:

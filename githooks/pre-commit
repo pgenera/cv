@@ -1,0 +1,10 @@
+#!/bin/sh
+# Format cv.yaml before it is committed. Enable with `make hooks`.
+git diff --cached --quiet -- cv.yaml && exit 0
+python3 fmt_yaml.py --check cv.yaml >/dev/null 2>&1 && exit 0
+if ! git diff --quiet -- cv.yaml; then
+	echo "pre-commit: cv.yaml needs formatting, and has unstaged edits." >&2
+	echo "Run 'make fmt', review, and stage it." >&2
+	exit 1
+fi
+python3 fmt_yaml.py cv.yaml && git add cv.yaml

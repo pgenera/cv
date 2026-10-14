@@ -2,7 +2,8 @@
 """Reformat cv.yaml in place: consistent indentation, long text wrapped as >- blocks.
 
 Keeps the leading comment block. Refuses to write if the result does not load
-back to exactly the same data.
+back to exactly the same data. With --check, writes nothing and exits 1 if the
+file is not already formatted.
 """
 
 import json
@@ -73,7 +74,10 @@ def emit(node, indent, out):
 
 
 def main():
-    path = Path(sys.argv[1] if len(sys.argv) > 1 else "cv.yaml")
+    args = sys.argv[1:]
+    check = "--check" in args
+    args = [a for a in args if a != "--check"]
+    path = Path(args[0] if args else "cv.yaml")
     text = path.read_text()
     data = yaml.safe_load(text)
     header = []
@@ -89,6 +93,8 @@ def main():
     result = "\n".join(header + [""] + out) + "\n"
     if yaml.safe_load(result) != data:
         sys.exit("fmt_yaml: formatted output does not round-trip; not writing")
+    if check:
+        sys.exit(0 if result == text else f"fmt_yaml: {path} needs formatting (make fmt)")
     path.write_text(result)
 
 

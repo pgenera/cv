@@ -77,9 +77,9 @@ experience:
         end: Feb 2024
         bullets:
           - >-
-            Took over management of the team of five while continuing SRE work. The scope
-            covered HIPAA and related compliance, infrastructure cost, project planning,
-            customer relationships, and software engineering productivity.
+            Took over management of the team of five while continuing SRE work. The
+            scope covered HIPAA and related compliance, infrastructure cost, project
+            planning, customer relationships, and software engineering productivity.
 
       - title: Senior Site Reliability Engineer
         team: Google for Clinicians
@@ -108,8 +108,8 @@ experience:
             (CloudPath, sitting between Google Cloud and Google production), a large and
             high-reliability component of the Google Cloud Platform.
           - >-
-            This load balancing project, with others, enabled traffic growth from
-            Gbps to Tbps, with higher customer reliability and lower cost.
+            This load balancing project, with others, enabled traffic growth from Gbps
+            to Tbps, with higher customer reliability and lower cost.
           - >-
             Landed features across the proxy and software-defined networking data and
             control planes
