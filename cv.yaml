@@ -25,8 +25,8 @@ summary: >-
   Infrastructure engineer with 19 years at Google. An expert at the layer where
   capacity, traffic management, and failure domains meet. 15 years as an individual
   contributor and tech lead across diverse projects such as Electronic Health Record AI
-  enrichment, planet-scale network load balancing, and Google Search with My Location,
-  and an additional 4 years managing small infrastructure teams while still writing and
+  enrichment, planet-scale network load balancing, and Google Search with My Location.
+  An additional 4 years managing small infrastructure teams while still writing and
   shipping systems code, internally and externally. Built global load balancing for the
   L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the
   reliability and safety of footprint operations across Google's internal
@@ -50,7 +50,7 @@ experience:
         end: Present
         bullets:
           - >-
-            Manage the team of 10 responsible for footprint operations (turn up, turn
+            Manage the team of ten responsible for footprint operations (turn up, turn
             down, resize, move) across Google's CD infrastructure, which actuates the
             majority of the datacenter footprint and is on the critical path for Cloud
             expansion, AI capacity delivery, and efficiency.
@@ -77,7 +77,7 @@ experience:
         end: Feb 2024
         bullets:
           - >-
-            Took over management of the team of 5 while continuing SRE work. The scope
+            Took over management of the team of five while continuing SRE work. The scope
             covered HIPAA and related compliance, infrastructure cost, project planning,
             customer relationships, and software engineering productivity.
 
