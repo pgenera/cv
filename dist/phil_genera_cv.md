@@ -12,7 +12,7 @@ Latest version: <https://cv.fivesevenfive.org/>. Updated October 2026.
 
 ## Summary
 
-Infrastructure engineer with 19 years at Google. An expert at the layer where capacity, traffic management, and failure domains meet. 15 years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location. An additional 4 years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and Google Cloud Storage; now training an oncall team in the Incident Command System.
+Infrastructure engineer with nineteen years at Google. An expert at the layer where capacity, traffic management, and failure domains meet. Fifteen years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location. An additional four years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and Google Cloud Storage; now training an oncall team in the Incident Command System.
 
 ## Technical
 
@@ -24,7 +24,7 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 #### Software Engineering Manager, Continuous Delivery Infrastructure (Feb 2024 – Present)
 
-- Manage the team of ten responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint and is on the critical path for Cloud expansion, AI capacity delivery, and efficiency.
+- Manage the team of ten responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint, and is on the critical path for Cloud expansion, AI capacity delivery, and efficiency.
 - Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined, and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is likely.
 - The team sits at the interface between automated capacity planning and actuation, and is moving footprint changes from operator-driven execution to automated, continuous actuation.
 - Built agentic workflows for the team: automated bug filing, hands-off ticket fixes and code reviews, and automated root-cause analysis.
