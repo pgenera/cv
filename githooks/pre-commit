@@ -4,8 +4,9 @@
 SRC="cv.yaml build.py boston_map.py og_image.py Makefile templates"
 git diff --cached --quiet -- $SRC && exit 0
 if ! git diff --quiet -- $SRC; then
-	echo "pre-commit: CV sources have unstaged edits; stage or stash them first:" >&2
-	git diff --name-only -- $SRC >&2
+	files=$(git diff --name-only -- $SRC)
+	echo "pre-commit: CV sources have unstaged edits:" $files >&2
+	echo "Include them with: git add" $files >&2
 	exit 1
 fi
 if ! git diff --cached --quiet -- cv.yaml; then
