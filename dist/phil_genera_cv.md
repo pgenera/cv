@@ -54,7 +54,7 @@ Java, Python, C++, SQL, and a long tail of DSLs; recent agentic work in Kotlin a
 #### Senior Site Reliability Engineer, YouTube & Storage Infrastructure (Nov 2012 – May 2014)
 
 - Ran the West Coast SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become the Google Cloud Storage frontend.
-- As tech lead, owned the upload server's SRE response to the 2013 Snowden disclosures, and contributed to the broader GCS infrastructure response.
+- As tech lead, owned the upload server's SRE response to the 2013 Snowden disclosures, and contributed to the broader GCS response.
 - Led the Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, GFiber, and YouTube TV.
 
 #### Software Engineer, Mobile Search (Aug 2007 – Nov 2012)
