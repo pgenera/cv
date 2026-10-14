@@ -108,8 +108,8 @@ experience:
             (CloudPath, sitting between Google Cloud and Google production), a large and
             high-reliability component of the Google Cloud Platform.
           - >-
-            This load balancing project, with others, enabled traffic growth from XX
-            Gbps to XX Tbps, with higher customer reliability and lower cost.
+            This load balancing project, with others, enabled traffic growth from
+            Gbps to Tbps, with higher customer reliability and lower cost.
           - >-
             Landed features across the proxy and software-defined networking data and
             control planes

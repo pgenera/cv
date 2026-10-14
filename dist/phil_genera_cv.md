@@ -42,7 +42,7 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 #### Senior Software Engineer, Google Cloud Networking (Aug 2017 – May 2021)
 
 - Built the first global load balancing for Google's internal L7 proxy (CloudPath, sitting between Google Cloud and Google production), a large and high-reliability component of the Google Cloud Platform.
-- This load balancing project, with others, enabled traffic growth from XX Gbps to XX Tbps, with higher customer reliability and lower cost.
+- This load balancing project, with others, enabled traffic growth from Gbps to Tbps, with higher customer reliability and lower cost.
 - Landed features across the proxy and software-defined networking data and control planes ([Orion](https://research.google/pubs/orion-googles-software-defined-networking-control-plane/), NSDI 2021).
 
 #### Senior Site Reliability Engineer, Social SRE (May 2014 – Aug 2017)
