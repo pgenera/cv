@@ -137,6 +137,8 @@ def render_tex(cv):
             L += tex_bullets(r["bullets"])
             L.append("")
 
+    L += [r"\section*{Patents \& Publications}"] + tex_bullets(cv["publications"]) + [""]
+
     L += [r"\section*{Personal Projects}", ""]
     for i, p in enumerate(cv["personal_projects"]):
         L.append(r"\vspace{%s}" % ("1pt" if i == 0 else "2pt"))
@@ -148,8 +150,6 @@ def render_tex(cv):
         L.append(r"\role{%s}{%s}" % (name, tex(p["dates"])))
         L += tex_bullets(p["bullets"])
         L.append("")
-
-    L += [r"\section*{Patents \& Publications}"] + tex_bullets(cv["publications"]) + [""]
 
     L.append(r"\section*{Education}")
     for e in cv["education"]:
@@ -208,6 +208,8 @@ def render_md(cv):
             title = r["title"] + (f", {r['team']}" if r.get("team") else "")
             L += [f"#### {title} ({md_dates(r)})", ""]
             L += [f"- {md(b)}" for b in r["bullets"]] + [""]
+    L += ["## Patents and Publications", ""]
+    L += [f"- {md(b)}" for b in cv["publications"]] + [""]
     L += ["## Personal Projects", ""]
     for p in cv["personal_projects"]:
         name = f"[{p['name']}]({p['url']})" if p.get("url") else p["name"]
@@ -215,8 +217,6 @@ def render_md(cv):
             name += f": {p['description']}"
         L += [f"### {name} ({p['dates']})", ""]
         L += [f"- {md(b)}" for b in p["bullets"]] + [""]
-    L += ["## Patents and Publications", ""]
-    L += [f"- {md(b)}" for b in cv["publications"]] + [""]
     L += ["## Education", ""]
     L += [f"- {e['school']}, {e['degree']} ({md_dates(e)})" for e in cv["education"]] + [""]
     L += ["## Additional", ""]

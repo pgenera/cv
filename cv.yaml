@@ -35,9 +35,8 @@ summary: >-
 
 technical: >-
   Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
-  agentic work in Kotlin and Go. Global and regional software load balancing,
-  networking, and Bluetooth reverse engineering. Agentic engineering with Claude Code
-  and Antigravity.
+  agentic work in Kotlin and Go with Claude Code and Antigravity. Global and regional
+  software load balancing, networking, and Bluetooth reverse engineering.
 
 experience:
   - org: Google
@@ -113,7 +112,7 @@ experience:
             control planes
             ([Orion](https://research.google/pubs/orion-googles-software-defined-networking-control-plane/),
             NSDI 2021).
-          - Small contributons to Envoy Proxy's control plane efficiency.
+          - Made small contributions to Envoy Proxy's control-plane efficiency.
 
       - title: Senior Site Reliability Engineer
         team: Social SRE
@@ -121,15 +120,15 @@ experience:
         end: Aug 2017
         bullets:
           - >-
-            Moved to Cambridge, MA as a tech lead for Social SRE, which ran the Gmail
+            Moved to Cambridge, MA, as a tech lead for Social SRE, which ran the Gmail
             contacts database along with other graph indexing and storage services.
           - >-
             When the team split into storage and graph halves, led the graph side:
             storage for all implicit and explicit social graph data, the Zanzibar
             authorization system ([USENIX ATC
             2019](https://www.usenix.org/conference/atc19/presentation/pang)), and a
-            service that ranks contacts by graph distance for suggest features across
-            Google products.
+            service that ranks contacts by graph distance for suggestions across Google
+            products.
 
       - title: Senior Site Reliability Engineer
         team: YouTube & Storage Infrastructure
@@ -138,13 +137,14 @@ experience:
         bullets:
           - >-
             Ran the West Coast SRE team operating YouTube's video transcoding pipeline
-            and upload server, which went on to become Google Cloud Storage frontend.
+            and upload server, which went on to become the Google Cloud Storage
+            frontend.
           - >-
-            As tech lead, performed the upload server and contributed to GCS
-            infrastructure response to the 2013 Snowden disclosures.
+            As tech lead, owned the upload server's SRE response to the 2013 Snowden
+            disclosures, and contributed to the broader GCS infrastructure response.
           - >-
             Led the Production Readiness Review and SRE onboarding of YouTube Live
-            Streaming infrastructure, which is shared between YouTube, gFiber, and
+            Streaming infrastructure, which is shared between YouTube, GFiber, and
             YouTube TV.
 
       - title: Software Engineer
@@ -157,7 +157,7 @@ experience:
             page, and co-authored the resulting patent with the product manager for the
             feature.
           - >-
-            Worked on google.com/m universal and local search, and designed and led the
+            Worked on google.com/m universal and local search; designed and led the
             local search property.
           - >-
             Tech lead for mobile search infrastructure work, including launching ads on
@@ -194,12 +194,12 @@ personal_projects:
         on rather than OS-level bonding, AES-GCM command framing, and the status stream
         that drives live lock, closure, charge, and range display.
       - >-
-        Security-first design that prioritizes reliability: the watch has no network
-        access and its private key is escrowed on the device, with a [companion phone
-        app](https://github.com/pgenera/wearvian-companion) performing the one-time
-        cloud enrollment over the Wear OS Data Layer.
+        Security-first design that works offline: the watch has no internet access and
+        its private key never leaves it; a [companion phone
+        app](https://github.com/pgenera/wearvian-companion) performs the one-time cloud
+        enrollment over the Wear OS Data Layer.
 
-  - name: Home automation and network toys
+  - name: Embedded systems and network services
     dates: ongoing
     bullets:
       - >-

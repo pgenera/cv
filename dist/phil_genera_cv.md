@@ -16,7 +16,7 @@ Infrastructure engineer with nineteen years at Google. An expert at the layer wh
 
 ## Technical
 
-Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent agentic work in Kotlin and Go. Global and regional software load balancing, networking, and Bluetooth reverse engineering. Agentic engineering with Claude Code and Antigravity.
+Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent agentic work in Kotlin and Go with Claude Code and Antigravity. Global and regional software load balancing, networking, and Bluetooth reverse engineering.
 
 ## Experience
 
@@ -44,23 +44,23 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 - Built the first global load balancing for Google's internal L7 proxy (CloudPath, sitting between Google Cloud and Google production), a large and high-reliability component of the Google Cloud Platform.
 - This load balancing project, with others, enabled traffic growth from Gbps to Tbps, with higher customer reliability and lower infrastructure cost.
 - Landed features across the proxy and software-defined networking data and control planes ([Orion](https://research.google/pubs/orion-googles-software-defined-networking-control-plane/), NSDI 2021).
-- Small contributons to Envoy Proxy's control plane efficiency.
+- Made small contributions to Envoy Proxy's control-plane efficiency.
 
 #### Senior Site Reliability Engineer, Social SRE (May 2014 – Aug 2017)
 
-- Moved to Cambridge, MA as a tech lead for Social SRE, which ran the Gmail contacts database along with other graph indexing and storage services.
-- When the team split into storage and graph halves, led the graph side: storage for all implicit and explicit social graph data, the Zanzibar authorization system ([USENIX ATC 2019](https://www.usenix.org/conference/atc19/presentation/pang)), and a service that ranks contacts by graph distance for suggest features across Google products.
+- Moved to Cambridge, MA, as a tech lead for Social SRE, which ran the Gmail contacts database along with other graph indexing and storage services.
+- When the team split into storage and graph halves, led the graph side: storage for all implicit and explicit social graph data, the Zanzibar authorization system ([USENIX ATC 2019](https://www.usenix.org/conference/atc19/presentation/pang)), and a service that ranks contacts by graph distance for suggestions across Google products.
 
 #### Senior Site Reliability Engineer, YouTube & Storage Infrastructure (Nov 2012 – May 2014)
 
-- Ran the West Coast SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become Google Cloud Storage frontend.
-- As tech lead, performed the upload server and contributed to GCS infrastructure response to the 2013 Snowden disclosures.
-- Led the Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, gFiber, and YouTube TV.
+- Ran the West Coast SRE team operating YouTube's video transcoding pipeline and upload server, which went on to become the Google Cloud Storage frontend.
+- As tech lead, owned the upload server's SRE response to the 2013 Snowden disclosures, and contributed to the broader GCS infrastructure response.
+- Led the Production Readiness Review and SRE onboarding of YouTube Live Streaming infrastructure, which is shared between YouTube, GFiber, and YouTube TV.
 
 #### Software Engineer, Mobile Search (Aug 2007 – Nov 2012)
 
 - Invented *Search with My Location*, the blue dot on the mobile search home page, and co-authored the resulting patent with the product manager for the feature.
-- Worked on google.com/m universal and local search, and designed and led the local search property.
+- Worked on google.com/m universal and local search; designed and led the local search property.
 - Tech lead for mobile search infrastructure work, including launching ads on new mobile properties.
 - 24x7 oncall: emergency capacity turnups, DoS response, and the Production Readiness Review. Trained the SRE team founded to take over mobile services.
 
@@ -70,26 +70,26 @@ Java, Python, C++, and SQL, and a long tail of domain-specific languages; recent
 
 - Built monitoring, diagnostics, and modular plugin tooling in Java for enterprise Linux telephony server clusters.
 
+## Patents and Publications
+
+- [U.S. Patent 9,081,860](https://patents.google.com/patent/US9081860B2/en), “Integration of Device Location into Search,” with J. Siegel (filed 2008, issued 2015).
+- “Self-Organizing Publish/Subscribe on the Network Edge,” *Technical Disclosure Commons, Defensive Publications Series*, [Art. 5601](https://www.tdcommons.org/dpubs_series/5601) (2022).
+
 ## Personal Projects
 
 ### [wearvian](https://github.com/pgenera/wearvian): Wear OS phone key for Rivian R1 vehicles (2026)
 
 - Wear OS app that functions as a Rivian phone key over Bluetooth LE: passive entry and drive enable by proximity, plus lock, frunk, liftgate, window, charge port, and climate commands.
 - Reverse engineered and documented the vehicle's phone-key protocol: the pairing handshake, the authenticated ranging heartbeat that passive entry actually keys on rather than OS-level bonding, AES-GCM command framing, and the status stream that drives live lock, closure, charge, and range display.
-- Security-first design that prioritizes reliability: the watch has no network access and its private key is escrowed on the device, with a [companion phone app](https://github.com/pgenera/wearvian-companion) performing the one-time cloud enrollment over the Wear OS Data Layer.
+- Security-first design that works offline: the watch has no internet access and its private key never leaves it; a [companion phone app](https://github.com/pgenera/wearvian-companion) performs the one-time cloud enrollment over the Wear OS Data Layer.
 
-### Home automation and network toys (ongoing)
+### Embedded systems and network services (ongoing)
 
 - [mpubsub](https://github.com/pgenera/esphome-mpubsub) implements the brokerless Publish/Subscribe from the [defensive publication](https://www.tdcommons.org/dpubs_series/5601), and adds typing and encryption.
 - [wallbox-ble](https://github.com/pgenera/wallbox-ble) attaches EV chargers to Home Assistant via Bluetooth proxies.
 - IPv4 and IPv6 NTP servers in the public pool, served from AMPRNet (44/8) address space. Hundreds of RPS of time served.
 - [sundial-ntp](https://github.com/pgenera/sundial-ntp) is a solar-disciplined NTP refclock.
 - Consoles, monitoring, and alerting for everything at home, from woodstoves to furnaces to solar arrays.
-
-## Patents and Publications
-
-- [U.S. Patent 9,081,860](https://patents.google.com/patent/US9081860B2/en), “Integration of Device Location into Search,” with J. Siegel (filed 2008, issued 2015).
-- “Self-Organizing Publish/Subscribe on the Network Edge,” *Technical Disclosure Commons, Defensive Publications Series*, [Art. 5601](https://www.tdcommons.org/dpubs_series/5601) (2022).
 
 ## Education
 
