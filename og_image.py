@@ -3,7 +3,8 @@
 A 1200x627 card, the size LinkedIn and most other sites expect. Colors come
 from the day-map tokens in templates/site.html and type from its Overpass
 font, so the card matches the site. The OpenStreetMap credit is in the PNG's
-metadata (Copyright), not drawn on the image.
+metadata (Copyright), not drawn on the image. Its Build fingerprint covers the
+SVG and fonts; an existing card with the same fingerprint is kept as is.
 
 rsvg-convert renders the SVG. Pango can't load WOFF2, so the fonts are first
 converted to TTF (fontTools) in a temporary fontconfig directory.
@@ -11,6 +12,7 @@ converted to TTF (fontTools) in a temporary fontconfig directory.
 Usage: python3 og_image.py cv.yaml dist/og-image.png
 """
 
+import hashlib
 import html
 import os
 import re
@@ -83,9 +85,21 @@ def card_svg(cv):
 
 def main(cv_path, out):
     cv = yaml.safe_load(Path(cv_path).read_text())
+    svg = card_svg(cv)
+    fonts = sorted((HERE / "templates" / "fonts").glob("*.woff2"))
+    # The card's inputs, so make can keep an existing card that matches, even
+    # if another machine's rsvg would write different bytes.
+    h = hashlib.sha256(svg.encode())
+    for f in fonts:
+        h.update(f.read_bytes())
+    build = h.hexdigest()[:12]
+    if Path(out).exists() and Image.open(out).text.get("Build") == build:
+        os.utime(out)
+        print(f"{out}: same build fingerprint, kept")
+        return
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
-        for woff2 in (HERE / "templates" / "fonts").glob("*.woff2"):
+        for woff2 in fonts:
             font = TTFont(woff2)
             font.flavor = None
             font.save(tmp / woff2.with_suffix(".ttf").name)
@@ -93,7 +107,7 @@ def main(cv_path, out):
             '<?xml version="1.0"?><!DOCTYPE fontconfig SYSTEM "fonts.dtd"><fontconfig>'
             '<include ignore_missing="yes">/etc/fonts/fonts.conf</include>'
             f"<dir>{tmp}</dir><cachedir>{tmp}/cache</cachedir></fontconfig>")
-        (tmp / "card.svg").write_text(card_svg(cv))
+        (tmp / "card.svg").write_text(svg)
         subprocess.run(["rsvg-convert", "-o", tmp / "card.png", tmp / "card.svg"], check=True,
                        env=dict(os.environ, FONTCONFIG_FILE=str(tmp / "fonts.conf")))
         card = Image.open(tmp / "card.png").convert("RGB")
@@ -102,6 +116,7 @@ def main(cv_path, out):
     meta.add_text("Author", cv["name"])
     meta.add_text("Description", f'{cv["name"]}, {cv["headline"]}. {cv["site"]}')
     meta.add_text("Copyright", CREDIT)
+    meta.add_text("Build", build)
     card.save(out, optimize=True, pnginfo=meta)
 
 

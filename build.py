@@ -175,12 +175,18 @@ def render_tex(cv):
         "<<SITELABEL>>": tex(site.split("://", 1)[-1].rstrip("/")),
         "<<UPDATED>>": content_date().strftime("%B %Y"),
         "<<PDFSUBJECT>>": tex(f"CV. Latest version: {site}"),
-        "<<PDFKEYWORDS>>": tex(f"source {site}; cv.yaml sha256:{cv['_fingerprint']}"),
         "<<BODY>>": "\n".join(L),
     }
     for k, v in fills.items():
         tpl = tpl.replace(k, v)
-    return tpl
+    # The build fingerprint covers everything that decides the PDF's content
+    # (this .tex and SOURCE_DATE_EPOCH, which pdflatex stamps in), so make can
+    # keep dist/'s PDF when it matches, even if another machine's TeX Live would
+    # write different bytes.
+    epoch = os.environ.get("SOURCE_DATE_EPOCH", "")
+    build = hashlib.sha256(f"{tpl}\n{epoch}".encode()).hexdigest()[:12]
+    return tpl.replace("<<PDFKEYWORDS>>", tex(
+        f"source {site}; cv.yaml sha256:{cv['_fingerprint']}; build sha256:{build}"))
 
 
 # ---------- Markdown ----------

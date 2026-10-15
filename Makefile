@@ -28,7 +28,11 @@ $(DIST)/$(NAME).pdf: $(BUILD)/$(NAME).tex
 	  && pdflatex -interaction=nonstopmode -halt-on-error $(NAME).tex >/dev/null \
 	  || { tail -30 $(NAME).log; exit 1; }
 	@mkdir -p $(DIST)
-	cp $(BUILD)/$(NAME).pdf $@
+	@# Same build fingerprint (in Keywords) as dist/'s copy: keep it, so other
+	@# machines' TeX Live versions don't churn the bytes.
+	@if [ -f $@ ] && [ "$$(pdfinfo $@ | grep '^Keywords:')" = "$$(pdfinfo $(BUILD)/$(NAME).pdf | grep '^Keywords:')" ]; \
+	then touch $@; echo "$@: same build fingerprint, kept"; \
+	else cp $(BUILD)/$(NAME).pdf $@; fi
 
 # Link-preview card (og:image): the hero map with name and headline.
 $(DIST)/og-image.png: cv.yaml og_image.py boston_map.py osm/map_data.json templates/site.html $(wildcard templates/fonts/*.woff2)
