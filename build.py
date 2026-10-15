@@ -291,6 +291,8 @@ def render_html(cv):
         "NAME": h(cv["name"]),
         "TITLE": html.escape(cv["name"]),
         "DESCRIPTION": html.escape(plain(cv["headline"]) + ". " + plain(cv["summary"]).split(". ")[0] + "."),
+        "OG_ALT": html.escape(f'{plain(cv["name"])}, {plain(cv["headline"])}, over a map of Greater Boston '
+                              f'with a location dot on {plain(cv["location"])}'),
         "HEADLINE": h(cv["headline"]),
         "LOCATION": h(cv["location"]),
         "CONTACT": "".join(contact),

@@ -30,8 +30,9 @@ $(DIST)/$(NAME).pdf: $(BUILD)/$(NAME).tex
 	@mkdir -p $(DIST)
 	cp $(BUILD)/$(NAME).pdf $@
 
-# Link-preview card (og:image): the top of page 1.
-$(DIST)/og-image.png: $(DIST)/$(NAME).pdf og_image.py
+# Link-preview card (og:image): the hero map with name and headline.
+$(DIST)/og-image.png: cv.yaml og_image.py boston_map.py osm/map_data.json templates/site.html $(wildcard templates/fonts/*.woff2)
+	@mkdir -p $(DIST)
 	python3 og_image.py $< $@
 
 $(DIST)/index.html: $(BUILD)/index.html
