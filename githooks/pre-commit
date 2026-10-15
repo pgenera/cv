@@ -1,6 +1,7 @@
 #!/bin/sh
-# Format cv.yaml, and rebuild dist/ with the commit's date, before a commit that
-# changes the CV's sources. Enable with `make hooks`.
+# Format cv.yaml and rebuild dist/ before a commit that changes the CV's
+# sources. The PDF gets the commit's date only when cv.yaml changes; otherwise
+# make keeps the date already in dist/. Enable with `make hooks`.
 SRC="cv.yaml build.py boston_map.py og_image.py Makefile templates"
 git diff --cached --quiet -- $SRC && exit 0
 if ! git diff --quiet -- $SRC; then
@@ -11,9 +12,10 @@ if ! git diff --quiet -- $SRC; then
 fi
 if ! git diff --cached --quiet -- cv.yaml; then
 	python3 fmt_yaml.py cv.yaml && git add cv.yaml || exit 1
+	SOURCE_DATE_EPOCH=$(date +%s) && export SOURCE_DATE_EPOCH
 fi
 # -W cv.yaml: rebuild everything downstream of it, even if dist/ looks current.
-log=$(SOURCE_DATE_EPOCH=$(date +%s) make -W cv.yaml 2>&1) || {
+log=$(make -W cv.yaml 2>&1) || {
 	echo "$log" | tail -20 >&2
 	echo "pre-commit: build failed" >&2
 	exit 1

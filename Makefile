@@ -3,9 +3,9 @@ BUILD := build
 DIST  := dist
 
 # Reproducible PDF: the date stamp only changes when the content does. The
-# pre-commit hook builds with the current time; later builds reuse the date in
-# dist/'s PDF while its cv.yaml fingerprint still matches, and otherwise fall
-# back to the last commit touching the sources.
+# pre-commit hook builds with the current time when cv.yaml changes; other
+# builds reuse the date in dist/'s PDF while its cv.yaml fingerprint still
+# matches, and otherwise fall back to the last commit touching the sources.
 ifndef SOURCE_DATE_EPOCH
 SOURCE_DATE_EPOCH := $(shell f=$(DIST)/$(NAME).pdf; \
   if [ -f $$f ] && pdfinfo $$f 2>/dev/null | grep -q "sha256:$$(sha256sum cv.yaml | cut -c1-12)"; \
