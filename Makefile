@@ -15,7 +15,7 @@ endif
 export SOURCE_DATE_EPOCH
 export FORCE_SOURCE_DATE := 1
 
-.PHONY: all clean check fmt hooks svn publish publish-push identify
+.PHONY: all clean check deps fmt hooks svn publish publish-push identify
 
 all: $(DIST)/$(NAME).pdf $(DIST)/index.html $(DIST)/$(NAME).md $(DIST)/og-image.png check
 
@@ -49,6 +49,10 @@ check: $(DIST)/$(NAME).pdf
 
 fmt:
 	python3 fmt_yaml.py cv.yaml
+
+# Build dependencies, all from apt.
+deps:
+	sudo apt install $$(grep -v '^\#' debian-packages.txt)
 
 # Use the repo's hooks (githooks/pre-commit formats cv.yaml and rebuilds dist/).
 # Once per clone.

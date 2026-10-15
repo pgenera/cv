@@ -2,10 +2,10 @@
 """Fetch and bake the hero map from OpenStreetMap into map_data.json.
 
 Run rarely, by hand, to refresh the map. Builds only read map_data.json, so
-they stay offline and dependency-free. This script needs shapely:
+they stay offline and dependency-free. This script needs shapely
+(python3-shapely, see debian-packages.txt):
 
-    python3 -m venv /tmp/mapvenv && /tmp/mapvenv/bin/pip install shapely
-    /tmp/mapvenv/bin/python map_fetch.py osm/cache
+    python3 map_fetch.py osm/cache
 
 Output goes to osm/map_data.json. osm/ is git-ignored: the baked map is a
 derived OSM database, so it is never committed (only the rendered site is).

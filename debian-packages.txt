@@ -1,0 +1,24 @@
+# Everything the build needs, from apt (Debian/Ubuntu). Install with `make deps`.
+
+# PDF
+texlive-latex-base
+texlive-latex-recommended
+texlive-latex-extra
+cm-super-minimal
+poppler-utils
+
+# Site, Markdown and link-preview card (og_image.py)
+python3
+python3-yaml
+python3-pil
+python3-fonttools
+python3-brotli
+librsvg2-bin
+
+# SVN mirror
+git-svn
+subversion
+
+# Map refresh only (map_fetch.py)
+python3-shapely
+python3-numpy
