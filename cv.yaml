@@ -28,7 +28,7 @@ summary: >-
   enrichment, planet-scale network load balancing, and Google Search with My Location.
   An additional four years managing small infrastructure teams while still writing and
   shipping systems code, internally and externally. Built global load balancing for the
-  L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the
+  L7 proxy carrying most storage bits in Google Cloud. Currently responsible for the
   reliability and safety of footprint operations across Google's internal
   continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and
   Google Cloud Storage; now training an oncall team in the Incident Command System.
@@ -62,9 +62,7 @@ experience:
             Persuading partner and customer teams to move capacity changes from
             operator-driven execution to automated, continuous actuation; the team sits
             at the interface between automated capacity planning and actuation.
-          - >-
-            Built agentic workflows for the team: conversational bug filing, hands-off
-            fixes and code reviews, and root-cause analysis.
+          - "Built agentic workflows for the team: conversational bug filing, autonomous  root-cause analysis, fixes, and code reviews."
           - >-
             Manage the US-East oncall team: onboarding new members, balancing workload
             with the global team, and training the team on the Incident Command System

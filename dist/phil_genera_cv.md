@@ -12,7 +12,7 @@ Latest version: <https://cv.fivesevenfive.org/>. Updated October 2026.
 
 ## Summary
 
-Infrastructure engineer with nineteen years at Google. An expert at the layer where capacity, traffic management, and failure domains meet. Fifteen years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location. An additional four years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud, and currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and Google Cloud Storage; now training an oncall team in the Incident Command System.
+Infrastructure engineer with nineteen years at Google. An expert at the layer where capacity, traffic management, and failure domains meet. Fifteen years as an individual contributor and tech lead across diverse projects such as Electronic Health Record AI enrichment, planet-scale network load balancing, and Google Search with My Location. An additional four years managing small infrastructure teams while still writing and shipping systems code, internally and externally. Built global load balancing for the L7 proxy carrying most storage bits in Google Cloud. Currently responsible for the reliability and safety of footprint operations across Google's internal continuous-delivery infrastructure. Carried the pager for Google Search, YouTube, and Google Cloud Storage; now training an oncall team in the Incident Command System.
 
 ## Technical
 
@@ -27,7 +27,7 @@ Java, Python, C++, SQL, and a long tail of DSLs; recent agentic work in Kotlin a
 - Manage the team of ten responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint, and is on the critical path for Cloud region and zone expansion, AI capacity delivery, and efficiency.
 - Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined, and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is predicted.
 - Persuading partner and customer teams to move capacity changes from operator-driven execution to automated, continuous actuation; the team sits at the interface between automated capacity planning and actuation.
-- Built agentic workflows for the team: conversational bug filing, hands-off fixes and code reviews, and root-cause analysis.
+- Built agentic workflows for the team: conversational bug filing, autonomous  root-cause analysis, fixes, and code reviews.
 - Manage the US-East oncall team: onboarding new members, balancing workload with the global team, and training the team on the Incident Command System annually; also a Boston Marathon ICS volunteer.
 
 #### Site Reliability Engineering Manager, Google for Clinicians (Jun 2022 – Feb 2024)
