@@ -62,7 +62,9 @@ experience:
             Persuading partner and customer teams to move capacity changes from
             operator-driven execution to automated, continuous actuation; the team sits
             at the interface between automated capacity planning and actuation.
-          - "Built agentic workflows for the team: conversational bug filing, autonomous  root-cause analysis, fixes, and code reviews."
+          - >-
+            Built agentic workflows for the team: conversational bug filing, autonomous
+            root-cause analysis, fixes, and code reviews.
           - >-
             Manage the US-East oncall team: onboarding new members, balancing workload
             with the global team, and training the team on the Incident Command System

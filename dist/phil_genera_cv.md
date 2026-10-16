@@ -27,7 +27,7 @@ Java, Python, C++, SQL, and a long tail of DSLs; recent agentic work in Kotlin a
 - Manage the team of ten responsible for footprint operations (turn up, turn down, resize, move) across Google's CD infrastructure, which actuates the majority of the datacenter footprint, and is on the critical path for Cloud region and zone expansion, AI capacity delivery, and efficiency.
 - Led the team through a 79% reduction in failures of those footprint operations. Negotiated, defined, and drove improvements to customer-centric SLIs, SLOs, and SLAs. Own the team's capacity supervision for footprint changes, which halts rollouts if overload is predicted.
 - Persuading partner and customer teams to move capacity changes from operator-driven execution to automated, continuous actuation; the team sits at the interface between automated capacity planning and actuation.
-- Built agentic workflows for the team: conversational bug filing, autonomous  root-cause analysis, fixes, and code reviews.
+- Built agentic workflows for the team: conversational bug filing, autonomous root-cause analysis, fixes, and code reviews.
 - Manage the US-East oncall team: onboarding new members, balancing workload with the global team, and training the team on the Incident Command System annually; also a Boston Marathon ICS volunteer.
 
 #### Site Reliability Engineering Manager, Google for Clinicians (Jun 2022 – Feb 2024)
