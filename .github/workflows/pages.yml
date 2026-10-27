@@ -31,3 +31,21 @@ jobs:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Cloudflare Pages serves cv.fivesevenfive.org (love/Envoy is the fallback).
+  # Skips quietly until the repo secrets exist.
+  cloudflare:
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+      - uses: cloudflare/wrangler-action@v3
+        if: ${{ env.CLOUDFLARE_API_TOKEN != '' }}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=cv --branch=main
